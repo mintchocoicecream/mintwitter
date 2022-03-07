@@ -1,30 +1,31 @@
 import React, { useEffect, useState } from "react";
 import { dbService } from "fbase";
-import { addDoc, collection, getDocs, query } from "firebase/firestore";
+import { addDoc, collection, onSnapshot, orderBy, query, serverTimestamp } from "firebase/firestore";
 
-const Home = () => {
+const Home = ({userObj}) => {
     const [mintweet, setMintweet] = useState("");
     const [mintweets, setMintweets] = useState([]);
-    const getMintweets = async () => {
-        const q = query(collection(dbService, "mintweets"));
-        const querySnapshot = await getDocs(q);
-        querySnapshot.forEach( (doc) => {
-            const mintweetObj = {
-            ...doc.data(),
-            id: doc.id,
-            }
-            setMintweets(prev => [mintweetObj, ...prev]);
-            });
-        };
     useEffect(() => {
-        getMintweets();
-    }, [])
+        const q = query(
+            collection(dbService, "mintweets"),
+            orderBy("createdAt", "desc"),
+        );
+        onSnapshot(q, (snapshot) => {
+            const mintweetArr = snapshot.docs.map( (doc) => ({
+                id: doc.id,
+                ...doc.data(),
+            }));
+        setMintweets(mintweetArr);
+        });
+        }, []);
+
     const onSubmit = async(e) => {
         e.preventDefault();
         try{
             await addDoc(collection(dbService, "mintweets"),{
-                mintweet,
-                createdAt: Date.now(),
+                text: mintweet,
+                createdAt: serverTimestamp(),
+                creatorId: userObj.uid,
             });
         }catch(error){
             console.error("Error adding document:", error);
@@ -36,7 +37,6 @@ const Home = () => {
         const {target: {value}} = event;
         setMintweet(value);
     }
-    console.log(mintweets);
     return (
         <div>
             <form onSubmit={onSubmit}>
@@ -46,7 +46,7 @@ const Home = () => {
             <div>
                 {mintweets.map( (mintweet) => (
                     <div key={mintweet.id}>
-                        <h4>{mintweet.mintweet}</h4>
+                        <h4>{mintweet.text}</h4>
                     </div>
                     )
                 )}
