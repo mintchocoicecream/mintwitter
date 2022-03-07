@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { dbService } from "fbase";
 import { addDoc, collection, onSnapshot, orderBy, query, serverTimestamp } from "firebase/firestore";
+import Mintweet from "components/Mintweet";
 
 const Home = ({userObj}) => {
     const [mintweet, setMintweet] = useState("");
@@ -45,9 +46,7 @@ const Home = ({userObj}) => {
             </form>
             <div>
                 {mintweets.map( (mintweet) => (
-                    <div key={mintweet.id}>
-                        <h4>{mintweet.text}</h4>
-                    </div>
+                    <Mintweet key={mintweet.id} mintObj={mintweet} isOwner={mintweet.creatorId === userObj.uid}/>
                     )
                 )}
             </div>
