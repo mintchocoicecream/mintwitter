@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { dbService } from "fbase";
+import { dbService, storageService } from "fbase";
 import { addDoc, collection, onSnapshot, orderBy, query, serverTimestamp } from "firebase/firestore";
 import Mintweet from "components/Mintweet";
+import { ref, uploadString } from "firebase/storage";
+import { v4 } from "uuid";
 
 const Home = ({userObj}) => {
     const [mintweet, setMintweet] = useState("");
@@ -21,19 +23,22 @@ const Home = ({userObj}) => {
         });
         }, []);
 
-    const onSubmit = async(e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
-        try{
-            await addDoc(collection(dbService, "mintweets"),{
-                text: mintweet,
-                createdAt: serverTimestamp(),
-                creatorId: userObj.uid,
-            });
-        }catch(error){
-            console.error("Error adding document:", error);
-        }
+        const storageRef = ref(storageService, `${userObj.uid}/${v4()}`);
+        const response = await uploadString(storageRef, attachment, "data_url");
+        console.log(response)
+        // try{
+        //     await addDoc(collection(dbService, "mintweets"),{
+        //         text: mintweet,
+        //         createdAt: serverTimestamp(),
+        //         creatorId: userObj.uid,
+        //     });
+        // }catch(error){
+        //     console.error("Error adding document:", error);
+        // }
         
-        setMintweet("");
+        // setMintweet("");
     };
     const onChange = (event) => {
         const {target: {value}} = event;
