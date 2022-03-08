@@ -40,6 +40,7 @@ const Mintweet = ({mintObj, isOwner}) => {
                 ) :(
                 <>
                 <h4>{mintObj.text}</h4>
+                {mintObj.attachmentUrl && <img src={mintObj.attachmentUrl} width="50px" height="50px" alt="attachmentUrl"/>}
                 {isOwner && (
                     <>
                         <button onClick={toggleEditing}>Edit</button>

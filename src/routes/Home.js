@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { dbService, storageService } from "fbase";
 import { addDoc, collection, onSnapshot, orderBy, query, serverTimestamp } from "firebase/firestore";
 import Mintweet from "components/Mintweet";
-import { ref, uploadString } from "firebase/storage";
+import { getDownloadURL, ref, uploadString } from "firebase/storage";
 import { v4 } from "uuid";
 
 const Home = ({userObj}) => {
@@ -25,20 +25,30 @@ const Home = ({userObj}) => {
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        const storageRef = ref(storageService, `${userObj.uid}/${v4()}`);
-        const response = await uploadString(storageRef, attachment, "data_url");
-        console.log(response)
-        // try{
-        //     await addDoc(collection(dbService, "mintweets"),{
-        //         text: mintweet,
-        //         createdAt: serverTimestamp(),
-        //         creatorId: userObj.uid,
-        //     });
-        // }catch(error){
-        //     console.error("Error adding document:", error);
-        // }
-        
-        // setMintweet("");
+        let attachmentUrl = "";
+
+        if(attachment !== ""){
+            //파일 경로 reference 만들기
+            const attachmentRef = ref(storageService, `${userObj.uid}/${v4()}`);
+            //storage reference 경로로 파일 업로드 하기
+            const response = await uploadString(attachmentRef, attachment, "data_url");
+            //storage에 있는 파일 URL로 다운로드 받기
+            attachmentUrl = await getDownloadURL(response.ref);
+        }
+        //트윗할 때 메시지와 사진도 같이 firestore에 생성
+        const mintweetPost = {
+                text: mintweet,
+                createdAt: serverTimestamp(),
+                creatorId: userObj.uid,
+                attachmentUrl,
+        };
+        try{
+            await addDoc(collection(dbService, "mintweets"),mintweetPost);
+        }catch(error){
+            console.error("Error adding document:", error);
+        }
+        setMintweet("");
+        setAttachment("");
     };
     const onChange = (event) => {
         const {target: {value}} = event;
