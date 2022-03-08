@@ -8,7 +8,7 @@ import { v4 } from "uuid";
 const Home = ({userObj}) => {
     const [mintweet, setMintweet] = useState("");
     const [mintweets, setMintweets] = useState([]);
-    const [attachment, setAttachment] = useState();
+    const [attachment, setAttachment] = useState("");
     useEffect(() => {
         const q = query(
             collection(dbService, "mintweets"),
