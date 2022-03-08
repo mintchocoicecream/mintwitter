@@ -1,15 +1,18 @@
-import { dbService } from "fbase";
+import { dbService, storageService } from "fbase";
 import { deleteDoc, doc, updateDoc } from "firebase/firestore";
+import { deleteObject, ref } from "firebase/storage";
 import React, { useState } from "react";
 
 const Mintweet = ({mintObj, isOwner}) => {
     const [editing, setEditing] = useState(false);
     const [newMintweet, setNewMintweet] = useState(mintObj.text);
     const mintweetRef = doc(dbService, "mintweets", `${mintObj.id}`);
+    const urlRef = ref(storageService, mintObj.attachmentUrl);
     const onDeleteClick = async () => {
         const ok = window.confirm("정말 이 게시글을 삭제하시겠습니까?");
         if(ok){
             await deleteDoc(mintweetRef);
+            await deleteObject(urlRef);
         }
     }
     const toggleEditing = () => setEditing((prev) => !prev);
