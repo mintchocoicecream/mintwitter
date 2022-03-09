@@ -9,7 +9,7 @@ import { Redirect } from "react-router-dom";
 const AppRouter = ({isLoggedIn, userObj}) => {
     return (
         <Router>
-            {isLoggedIn && <Navigation />}
+            {isLoggedIn && <Navigation userObj={userObj} />}
             <Switch>
                 {isLoggedIn ? (
                 <>
