@@ -1,4 +1,7 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTwitter } from "@fortawesome/free-brands-svg-icons";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 const Navigation = ({userObj}) => {
@@ -8,12 +11,18 @@ const Navigation = ({userObj}) => {
     }
     return(
         <nav>
-            <ul>
+            <ul className="navUl">
                 <li>
-                    <Link to="/">Home</Link>
+                    <Link to="/" className="navHome">
+                        <FontAwesomeIcon icon={faTwitter} color={"#04AAFF"} size="2x" />
+                    </Link>
                 </li>
                 <li>
-                    <Link to="/profile">{userObj.displayName}'s Profile</Link>
+                    <Link className="navProfile" to="/profile">
+                        <FontAwesomeIcon icon={faUser} color={"#04AAFF"} size="2x" />
+                        <span>
+                            {userObj.displayName? `${userObj.displayName}'s Profile` : "Profile" }</span>
+                    </Link>
                 </li>
             </ul>
         </nav>

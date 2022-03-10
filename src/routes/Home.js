@@ -23,9 +23,9 @@ const Home = ({userObj}) => {
 
     
     return (
-        <div>
+        <div className="container">
             <MintFactory userObj={userObj}/>
-            <div>
+            <div className="homeDiv">
                 {mintweets.map( (mintweet) => (
                     <Mintweet key={mintweet.id} mintObj={mintweet} isOwner={mintweet.creatorId === userObj.uid}/>
                     )

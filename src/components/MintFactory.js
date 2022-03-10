@@ -2,6 +2,8 @@ import { dbService, storageService } from "fbase";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { getDownloadURL, ref, uploadString} from "firebase/storage";
 import { v4 } from "uuid";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus, faTimes } from "@fortawesome/free-solid-svg-icons";
 import React, { useState } from "react";
 
 const MintFactory = ({ userObj }) => {
@@ -9,8 +11,11 @@ const MintFactory = ({ userObj }) => {
     const [attachment, setAttachment] = useState("");
     const onSubmit = async (e) => {
         e.preventDefault();
-        let attachmentUrl = "";
+        if(mintweet === ""){
+            return;
+        }
 
+        let attachmentUrl = "";
         if(attachment !== ""){
             //파일 경로 reference 만들기
             const attachmentRef = ref(storageService, `${userObj.uid}/${v4()}`);
@@ -56,18 +61,27 @@ const MintFactory = ({ userObj }) => {
     };
 
     const onClearAttachment = () => {
-        setAttachment(null);
+        setAttachment("");
     };
 
     return (
-        <form onSubmit={onSubmit}>
-                <input value={mintweet} type="text" placeholder="What's on your min?" onChange={onChange} maxLength={120}/>
-                <input type="file" accept="image/*" onChange={onFileChange}/>
-                <input type="submit" value="Mintweet" />
+        <form onSubmit={onSubmit} className="factoryForm">
+            <div className="factoryInput__container">
+            <input className="factoryInput__input" value={mintweet} type="text" placeholder="What's on your mind?" onChange={onChange} maxLength={120}/>
+            <input type="submit" value="&rarr;" className="factoryInput__arrow" />
+            </div>
+            <label htmlFor="attach-file" className="factoryInput__label">
+                <span>Add photos</span>    
+                <FontAwesomeIcon icon={faPlus} />
+            </label>
+            <input id="attach-file" type="file" accept="image/*" onChange={onFileChange}/>
             {attachment && (
-                <div>
-                    <img src={attachment} width="50px" height="50px" alt="attachment"/>
-                    <button onClick={onClearAttachment}>Clear</button>
+                <div className="factoryForm__attachment">
+                    <img src={attachment} alt="attachment" style={{backgroundImage: attachment,}}/>
+                    <div className="factoryForm__clear" onClick={onClearAttachment}>
+                        <span>Remove</span>
+                        <FontAwesomeIcon icon={faTimes} />
+                    </div>
                 </div>
             )}
                 
