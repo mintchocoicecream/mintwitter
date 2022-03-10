@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/mintwitter/static/css/main.e4f1031c.css",
+    "main.js": "/mintwitter/static/js/main.eba6b801.js",
+    "index.html": "/mintwitter/index.html",
+    "main.e4f1031c.css.map": "/mintwitter/static/css/main.e4f1031c.css.map",
+    "main.eba6b801.js.map": "/mintwitter/static/js/main.eba6b801.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e4f1031c.css",
+    "static/js/main.eba6b801.js"
+  ]
+}
