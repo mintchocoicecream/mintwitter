@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const Navigation = ({userObj}) => {
     if(userObj.displayName === null){
-        const name= userObj.email.split("@")[0];
+        const name= "Anonymous";
         userObj.displayName = name;
     }
     return(

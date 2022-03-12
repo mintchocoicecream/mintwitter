@@ -28,6 +28,7 @@ const AuthForm = () => {
             }
             console.log(data);
         }catch(error){
+            console.log(error.code);
             setError(error.message)
         }
     };
@@ -37,8 +38,8 @@ const AuthForm = () => {
     return (
         <>
             <form onSubmit={onSubmit} className="container">
-                <input className="authInput" name="email" type="email" placeholder="Email" required value={email} onChange={onChange}/>
-                <input className="authInput" name="password" type="password" placeholder="Password" required value={password} onChange={onChange}/>
+                <input className="authInput" name="email" type="email" placeholder="example@email.com" required value={email} onChange={onChange}/>
+                <input className="authInput" name="password" type="password" placeholder="password" required value={password} onChange={onChange}/>
                 <input className="authInput authSubmit" type="submit" value={newAccount ? "Create Account" : "Sign In"} />
                 {error && <span className="authError">{error}</span>}
             </form>

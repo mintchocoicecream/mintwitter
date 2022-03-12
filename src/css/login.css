@@ -1,0 +1,101 @@
+:root {
+  --mint: rgb(174, 255, 235);
+  --light-mint: rgba(174, 255, 235, 0.548);
+  --beige: rgba(250, 235, 215, 0.623);
+  --light-black: rgba(0, 0, 0, 0.452);
+  --box-shadow: 3px 3px rgb(233, 233, 233);
+}
+
+.authContainer {
+  margin-top: 30%;
+  text-align: center;
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.auth__icon {
+  color: var(--mint);
+}
+
+.authInput {
+  margin: 15px 0px;
+  padding: 10px;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  border-bottom: 1px solid var(--light-black);
+  transition: border-bottom 0.3s ease-in-out;
+}
+
+.authInput::placeholder {
+  font-size: 15px;
+  color: var(--light-black);
+}
+
+.authInput:focus {
+  border-bottom: 2px solid var(--mint);
+}
+
+.authSubmit {
+  cursor: pointer;
+  border: none;
+  background-color: var(--mint);
+  border-radius: 5px;
+  transition: 0.3s ease-in-out;
+  font-weight: 600;
+  color: var(--light-black);
+}
+
+.authSubmit:hover {
+  background-color: var(--light-mint);
+  color: #fff;
+  box-shadow: var(--box-shadow);
+}
+.authError {
+  margin-bottom: 15px;
+  font-size: 13px;
+  color: tomato;
+}
+
+.authSwitch {
+  margin: 5px 0px;
+  color: var(--light-black);
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.authSwitch:hover {
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.authBtns {
+  margin: 15px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.authBtn {
+  margin: 10px 0;
+  padding: 10px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  font-weight: 600;
+  color: var(--light-black);
+}
+
+.authBtn:hover {
+  box-shadow: var(--box-shadow);
+}
+
+.authBtnIcon {
+  margin-left: 3px;
+}
+
+.authBtnIcon {
+  color: purple;
+}
