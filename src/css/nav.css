@@ -1,0 +1,40 @@
+.navUl {
+  display: flex;
+  left: 20%;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  position: fixed;
+  border-right: 2px solid var(--light-black);
+}
+
+.navUl li {
+  margin: 10px 0;
+  padding: 5px 0;
+}
+
+.navHome {
+  color: var(--mint);
+  transition: 0.3s ease-in-out;
+}
+
+.navHome:hover {
+  color: var(--light-mint);
+}
+
+.navProfile {
+  color: var(--mint);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-decoration: none;
+}
+
+.navProfile:hover {
+  color: var(--light-mint);
+}
+
+.navProfile span {
+  padding: 5px 0;
+  font-size: 12px;
+}

@@ -80,6 +80,9 @@
 }
 
 .authBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 10px 0;
   padding: 10px;
   cursor: pointer;
@@ -94,8 +97,9 @@
 
 .authBtnIcon {
   margin-left: 3px;
+  color: #4285f4;
 }
 
-.authBtnIcon {
+.github {
   color: purple;
 }

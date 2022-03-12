@@ -1,6 +1,16 @@
 @import "https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css";
 
+/* Components */
 @import "css/login.css";
+@import "css/nav.css";
+
+:root {
+  --mint: rgb(174, 255, 235);
+  --light-mint: rgba(174, 255, 235, 0.548);
+  --beige: rgba(250, 235, 215, 0.623);
+  --light-black: rgba(0, 0, 0, 0.452);
+  --box-shadow: 3px 3px rgb(233, 233, 233);
+}
 
 * {
   box-sizing: border-box;
@@ -14,15 +24,6 @@ body {
   font-weight: 500;
 }
 
-footer {
-  position: fixed;
-  bottom: 0;
-  right: 10px;
-  padding: 20px;
-  font-size: 13px;
-  color: var(--light-black);
-}
-
 #root {
   width: 500px;
   padding: 0 70px;
@@ -32,4 +33,16 @@ button {
   outline: none;
   border: none;
   border-radius: 5px;
+}
+
+footer {
+  display: flex;
+  justify-content: end;
+  padding: 20px 0;
+  font-size: 13px;
+  color: var(--light-black);
+}
+
+nav {
+  margin: 15% 0;
 }

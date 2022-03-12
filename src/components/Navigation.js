@@ -14,12 +14,12 @@ const Navigation = ({userObj}) => {
             <ul className="navUl">
                 <li>
                     <Link to="/" className="navHome">
-                        <FontAwesomeIcon icon={faTwitter} color={"#04AAFF"} size="2x" />
+                        <FontAwesomeIcon icon={faTwitter} size="2x" />
                     </Link>
                 </li>
                 <li>
                     <Link className="navProfile" to="/profile">
-                        <FontAwesomeIcon icon={faUser} color={"#04AAFF"} size="2x" />
+                        <FontAwesomeIcon icon={faUser} size="2x" />
                         <span>
                             {userObj.displayName? `${userObj.displayName}'s Profile` : "Profile" }</span>
                     </Link>
