@@ -3,7 +3,7 @@ import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { getDownloadURL, ref, uploadString} from "firebase/storage";
 import { v4 } from "uuid";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faImage, faPlus, faTimes } from "@fortawesome/free-solid-svg-icons";
 import React, { useState } from "react";
 
 const MintFactory = ({ userObj }) => {
@@ -67,20 +67,26 @@ const MintFactory = ({ userObj }) => {
     return (
         <form onSubmit={onSubmit} className="factoryForm">
             <div className="factoryInput__container">
-            <input className="factoryInput__input" value={mintweet} type="text" placeholder="What's on your mind?" onChange={onChange} maxLength={120}/>
-            <input type="submit" value="&rarr;" className="factoryInput__arrow" />
+                <textarea className="factoryInput__input" type="text" placeholder="What's on your mind?" onChange={onChange} rows="5" maxLength={150}>
+                    {mintweet}
+                </textarea>
+                <input type="submit" value="&rarr;" className="factoryInput__arrow" />
             </div>
-            <label htmlFor="attach-file" className="factoryInput__label">
-                <span>Add photos</span>    
-                <FontAwesomeIcon icon={faPlus} />
-            </label>
-            <input id="attach-file" type="file" accept="image/*" onChange={onFileChange}/>
+            <div className="factoryInput__addfile">
+                <label htmlFor="attach-file" className="factoryInput__label" value="">
+                    <span>
+                        <FontAwesomeIcon icon={faPlus} />
+                        <FontAwesomeIcon icon={faImage} />
+                    </span>    
+                </label>
+                <input id="attach-file" type="file" accept="image/*" onChange={onFileChange}/>
+            </div>
+
             {attachment && (
                 <div className="factoryForm__attachment">
-                    <img src={attachment} alt="attachment" style={{backgroundImage: attachment,}}/>
+                    <img src={attachment} alt="attachment" width="400" height="300" style={{backgroundImage: attachment,}}/>
                     <div className="factoryForm__clear" onClick={onClearAttachment}>
-                        <span>Remove</span>
-                        <FontAwesomeIcon icon={faTimes} />
+                        <FontAwesomeIcon icon={faTimes} size="lg" />
                     </div>
                 </div>
             )}

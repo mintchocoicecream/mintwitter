@@ -1,8 +1,8 @@
-@import "https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css";
-
+@import "css/reset.css";
 /* Components */
 @import "css/login.css";
 @import "css/nav.css";
+@import "css/mintweet.css";
 
 :root {
   --mint: rgb(174, 255, 235);
@@ -10,6 +10,8 @@
   --beige: rgba(250, 235, 215, 0.623);
   --light-black: rgba(0, 0, 0, 0.452);
   --box-shadow: 3px 3px rgb(233, 233, 233);
+  --font-basic:  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+  Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 * {
@@ -17,16 +19,27 @@
 }
 
 body {
-  display: flex;
-  justify-content: center;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+ font-family: var(--font-basic);
   font-weight: 500;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+nav {
+  display: flex;
+  justify-content: flex-end;
+  background-color: antiquewhite;
+  width: 40%;
 }
 
 #root {
-  width: 500px;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
   padding: 0 70px;
+  margin: 8% 0;
 }
 
 button {
@@ -36,13 +49,8 @@ button {
 }
 
 footer {
-  display: flex;
-  justify-content: end;
-  padding: 20px 0;
   font-size: 13px;
   color: var(--light-black);
-}
-
-nav {
-  margin: 15% 0;
+  text-align: end;
+  padding: 40px 20px;
 }

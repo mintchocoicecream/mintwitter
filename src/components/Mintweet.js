@@ -38,7 +38,7 @@ const Mintweet = ({mintObj, isOwner}) => {
             {
                 editing ? (
                 <>
-                    <form onSubmit={onSubmit} className="container nweetEdit">
+                    <form onSubmit={onSubmit} className="nweetEdit">
                         <input onChange={onChange} type="text" value={newMintweet} required autoFocus className="formInput"/>
                         <input type="submit" value="Update Mintweet" className="formBtn"/>
                     </form>

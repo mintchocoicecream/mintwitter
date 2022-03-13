@@ -1,11 +1,13 @@
 .navUl {
+  background-color: pink;
+  padding: 5px 5px;
   display: flex;
-  left: 20%;
+  position: fixed;
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  position: fixed;
   border-right: 2px solid var(--light-black);
+  width: 100px;
 }
 
 .navUl li {

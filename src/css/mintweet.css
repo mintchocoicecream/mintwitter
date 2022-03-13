@@ -1,0 +1,119 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: azure;
+  width: 100%;
+}
+
+.homeDiv,
+.factoryForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 0;
+  background-color: aliceblue;
+  width: 80%;
+}
+
+.homeDiv {
+  background-color: beige;
+}
+
+.factoryForm input {
+  border-radius: 5px;
+}
+
+.factoryInput__container {
+  margin: 10px 0;
+  border-radius: 5px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.factoryInput__input {
+  display: block;
+  border-radius: 5px;
+  padding: 10px 10px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.698);
+  font-size: 15px;
+  border: none;
+  outline: none;
+  width: 70%;
+  resize: none;
+  transition: 0.3s ease-in-out;
+}
+
+.factoryInput__input::placeholder {
+  color: rgba(0, 0, 0, 0.698);
+}
+
+.factoryInput__input:focus {
+  outline: 2px solid var(--mint);
+}
+
+.factoryInput__arrow {
+  padding: 10px 10px;
+  background-color: var(--mint);
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.factoryInput__arrow:hover {
+  background-color: var(--light-mint);
+}
+
+.factoryInput__addfile {
+  display: flex;
+  align-items: center;
+  padding: 5px 0;
+  margin: 10px 0;
+  width: 70%;
+  justify-content: flex-end;
+}
+
+.factoryInput__label span {
+  display: flex;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.factoryInput__addfile input[type="file"] {
+  position: absolute;
+  width: 0;
+  height: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+}
+
+.factoryForm__attachment {
+  display: flex;
+  margin: 10px 0;
+}
+
+.factoryForm__attachment img {
+  max-width: 100%;
+  height: auto;
+}
+
+.factoryForm__clear {
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.factoryForm__clear:hover {
+  color: var(--mint);
+}
+
+.nweet {
+  display: flex;
+  width: 80%;
+  justify-content: center;
+}
