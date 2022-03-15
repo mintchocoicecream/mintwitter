@@ -1,21 +1,21 @@
 .container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   background-color: azure;
-  width: 100%;
+  width: 80%;
+  padding: 0 10px;
+  height: 100%;
 }
 
-.homeDiv,
 .factoryForm {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  padding: 30px 0;
+  align-items: flex-end;
+  padding: 20px 50px;
   background-color: aliceblue;
-  width: 80%;
+  border: 1px solid #000;
+  width: 100%;
 }
 
 .homeDiv {
@@ -43,7 +43,8 @@
   font-size: 15px;
   border: none;
   outline: none;
-  width: 70%;
+  width: 600px;
+  justify-content: center;
   resize: none;
   transition: 0.3s ease-in-out;
 }
@@ -52,6 +53,7 @@
   color: rgba(0, 0, 0, 0.698);
 }
 
+.factoryInput__input:active,
 .factoryInput__input:focus {
   outline: 2px solid var(--mint);
 }
@@ -71,17 +73,24 @@
 
 .factoryInput__addfile {
   display: flex;
-  align-items: center;
   padding: 5px 0;
   margin: 10px 0;
-  width: 70%;
+  width: 100%;
+}
+
+.factoryInput__label {
+  display: flex;
   justify-content: flex-end;
+  cursor: pointer;
+  width: 800px;
 }
 
 .factoryInput__label span {
-  display: flex;
-  margin-right: 10px;
-  cursor: pointer;
+  display: block;
+}
+
+.factriInput__label span i {
+  margin-right: 12px;
 }
 
 .factoryInput__addfile input[type="file"] {
@@ -96,6 +105,8 @@
 .factoryForm__attachment {
   display: flex;
   margin: 10px 0;
+  width: 100%;
+  justify-content: center;
 }
 
 .factoryForm__attachment img {

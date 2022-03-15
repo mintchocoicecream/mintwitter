@@ -20,7 +20,7 @@ const Auth = () => {
 
     return (
         <div className="authContainer">
-            <FontAwesomeIcon className="auth__icon" icon={faTwitter} size="3x" style={{marginBottom: 30}}/>
+            <FontAwesomeIcon className="auth__icon" href="#" icon={faTwitter} size="3x" style={{marginBottom: 50}}/>
             <AuthForm />
             <div className="authBtns">
                 <button className="authBtn" onClick={onSocialClick} name="google">

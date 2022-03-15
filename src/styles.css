@@ -25,21 +25,29 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  height: 1000vh;
+}
+
+#root {
+  display: flex;
+  width: 100%;
+  padding: 0 70px;
+  margin: 7% 0;
+  justify-content: center;
 }
 
 nav {
   display: flex;
   justify-content: flex-end;
   background-color: antiquewhite;
-  width: 40%;
+  width: 20%;
+  box-sizing: border-box; 
+  z-index: 2;
 }
 
-#root {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  padding: 0 70px;
-  margin: 8% 0;
+textarea {
+  outline: none;
+  border: none;
 }
 
 button {

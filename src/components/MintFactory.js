@@ -91,7 +91,7 @@ const MintFactory = ({ userObj }) => {
                 </div>
             )}
                 
-            </form>
+        </form>
     )
 }
 

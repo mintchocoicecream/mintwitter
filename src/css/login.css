@@ -1,17 +1,9 @@
-:root {
-  --mint: rgb(174, 255, 235);
-  --light-mint: rgba(174, 255, 235, 0.548);
-  --beige: rgba(250, 235, 215, 0.623);
-  --light-black: rgba(0, 0, 0, 0.452);
-  --box-shadow: 3px 3px rgb(233, 233, 233);
-}
-
 .authContainer {
   display: flex;
   flex-direction: column;
-  margin: 10%;
+  margin: 0 10%;
   text-align: center;
-  width: 450px;
+  width: 400px;
 }
 
 .authForm_container {
@@ -21,6 +13,9 @@
 
 .auth__icon {
   color: var(--mint);
+  cursor: pointer;
+  width: fit-content;
+  margin-left: 180px;
 }
 
 .authInput {
