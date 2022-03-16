@@ -1,7 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { faPenToSquare, faUser } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 const Navigation = ({userObj}) => {
@@ -24,6 +24,16 @@ const Navigation = ({userObj}) => {
                             {userObj.displayName? `${userObj.displayName}'s Profile` : "Profile" }</span>
                     </Link>
                 </li>
+                <li>
+                    <Link className="navWrite" to="/">
+                        <FontAwesomeIcon icon={faPenToSquare} size="2x" />
+                        <span>
+                            post
+                        </span>
+                    </Link>
+                </li>
+                
+                
             </ul>
         </nav>
     )

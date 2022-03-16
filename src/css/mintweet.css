@@ -125,6 +125,33 @@
 
 .nweet {
   display: flex;
-  width: 80%;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
   justify-content: center;
+}
+
+.nweet__contents {
+  display: flex;
+  width: 80%;
+  flex-direction: column;
+  justify-content: center;
+  padding: 15px;
+  border-bottom: 2px solid sandybrown;
+  margin: 10px 0;
+}
+
+.nweet__contents h4 {
+  padding: 15px 0;
+}
+
+.nweet__actions {
+  width: 100%;
+  border-top: 2px solid rgba(0, 0, 0, 0.4);
+  margin-top: 10px;
+  padding: 10px 0;
+}
+
+.nweetImg {
+  max-width: 60%;
 }

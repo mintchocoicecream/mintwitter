@@ -10,8 +10,8 @@
   --beige: rgba(250, 235, 215, 0.623);
   --light-black: rgba(0, 0, 0, 0.452);
   --box-shadow: 3px 3px rgb(233, 233, 233);
-  --font-basic:  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-  Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  --font-basic: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 * {
@@ -19,13 +19,12 @@
 }
 
 body {
- font-family: var(--font-basic);
+  font-family: var(--font-basic);
   font-weight: 500;
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 1000vh;
 }
 
 #root {
@@ -41,7 +40,7 @@ nav {
   justify-content: flex-end;
   background-color: antiquewhite;
   width: 20%;
-  box-sizing: border-box; 
+  box-sizing: border-box;
   z-index: 2;
 }
 

@@ -9,6 +9,12 @@ import React, { useState } from "react";
 const MintFactory = ({ userObj }) => {
     const [mintweet, setMintweet] = useState("");
     const [attachment, setAttachment] = useState("");
+
+    const onChange = (event) => {
+        const {target: {value}} = event;
+        setMintweet(value);
+    };
+
     const onSubmit = async (e) => {
         e.preventDefault();
         if(mintweet === ""){
@@ -31,18 +37,15 @@ const MintFactory = ({ userObj }) => {
                 creatorId: userObj.uid,
                 attachmentUrl,
         };
+
         try{
             await addDoc(collection(dbService, "mintweets"),mintweetPost);
         }catch(error){
             console.error("Error adding document:", error);
         }
-        setMintweet("");
+        
         setAttachment("");
-    };
-
-    const onChange = (event) => {
-        const {target: {value}} = event;
-        setMintweet(value);
+        setMintweet("");
     };
 
     const onFileChange = (event) => {
@@ -67,8 +70,7 @@ const MintFactory = ({ userObj }) => {
     return (
         <form onSubmit={onSubmit} className="factoryForm">
             <div className="factoryInput__container">
-                <textarea className="factoryInput__input" type="text" placeholder="What's on your mind?" onChange={onChange} rows="5" maxLength={150}>
-                    {mintweet}
+                <textarea value={mintweet} className="factoryInput__input" type="text" placeholder="What's on your mind?" onChange={onChange} rows="5" maxLength={150}>
                 </textarea>
                 <input type="submit" value="&rarr;" className="factoryInput__arrow" />
             </div>
