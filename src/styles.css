@@ -6,7 +6,9 @@
 
 :root {
   --mint: rgb(174, 255, 235);
-  --light-mint: rgba(174, 255, 235, 0.548);
+  --light-mint: rgba(174, 255, 235, 0.5);
+  --pink: rgb(251, 215, 245);
+  --light-pink: rgb(251, 215, 245, 0.5);
   --beige: rgba(250, 235, 215, 0.623);
   --light-black: rgba(0, 0, 0, 0.452);
   --box-shadow: 3px 3px rgb(233, 233, 233);
@@ -29,7 +31,7 @@ body {
 
 #root {
   display: flex;
-  width: 100%;
+  width: 100vw;
   padding: 0 70px;
   margin: 7% 0;
   justify-content: center;
@@ -38,7 +40,6 @@ body {
 nav {
   display: flex;
   justify-content: flex-end;
-  background-color: antiquewhite;
   width: 20%;
   box-sizing: border-box;
   z-index: 2;

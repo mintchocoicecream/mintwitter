@@ -4,6 +4,7 @@
   margin: 0 10%;
   text-align: center;
   width: 400px;
+  position: relative;
 }
 
 .authForm_container {
@@ -14,10 +15,10 @@
 .auth__icon {
   color: var(--mint);
   cursor: pointer;
-  width: fit-content;
-  margin-left: 180px;
+  justify-content: center;
 }
 
+.authForm__createAccount,
 .authInput {
   margin: 15px 0px;
   padding: 10px;
@@ -33,8 +34,22 @@
   color: var(--light-black);
 }
 
-.authInput:focus {
-  border-bottom: 2px solid var(--mint);
+@keyframes inputbottom {
+  from {
+    border-bottom: 2px solid var(--mint);
+    opacity: 0.1;
+    width: 0;
+  }
+  to {
+    border-bottom: 2px solid var(--mint);
+    opacity: 1;
+    width: 100%;
+  }
+}
+
+.authInput[type="email"]:focus,
+.authInput[type="password"]:focus {
+  animation: inputbottom 1s ease-in-out forwards;
 }
 
 .authSubmit {
@@ -65,21 +80,19 @@
   transition: 0.3s ease-in-out;
 }
 
-.authSwitch:hover {
-  color: rgba(0, 0, 0, 0.75);
-}
-
 .authBtns {
   margin: 15px 0;
   display: flex;
-  flex-direction: column;
+  justify-content: space-around;
 }
 
 .authBtn {
+  width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 10px 0;
+  margin: 10px 5px;
   padding: 10px;
   cursor: pointer;
   transition: 0.3s ease-in-out;
@@ -93,9 +106,129 @@
 }
 
 .authBtnIcon {
-  margin-left: 5px;
+  margin-bottom: 5px;
 }
 
 .github {
   color: purple;
+}
+
+.authForm__createAccount {
+  background-color: white;
+  border: 2px solid var(--mint);
+  margin-top: 0;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--light-black);
+  transition: 0.3s ease-in-out;
+}
+
+.authForm__createAccount:hover {
+  color: var(--mint);
+  box-shadow: var(--box-shadow);
+}
+
+@keyframes showModal {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.authForm__join-modal {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: 80px;
+  padding-bottom: 30px;
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 3px solid var(--pink);
+  border-radius: 5px;
+  animation: showModal 1s ease-in-out;
+}
+
+.authForm__modal-closeicon {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+.authForm__modal-close {
+  cursor: pointer;
+  font-size: 25px;
+  margin-right: 5px;
+}
+
+.authForm__modal-close:hover {
+  opacity: 0.5;
+}
+
+.authForm__join-modal h1 {
+  font-size: 20px;
+  border-bottom: 2px solid #000;
+  width: fit-content;
+  padding: 8px 10px;
+}
+
+.authForm__join-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 20px 20px;
+}
+
+.authForm__join-form label {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.authJoinInput {
+  border: 2px solid var(--pink);
+  margin: 15px 0px;
+  padding: 10px;
+  outline: none;
+  width: 100%;
+  font-size: 15px;
+  border-radius: 5px;
+}
+
+@keyframes modalbottom {
+  from {
+    background-color: var(--pink);
+    opacity: 0.1;
+    width: 0;
+  }
+  to {
+    background-color: var(--pink);
+    opacity: 1;
+    width: 100%;
+  }
+}
+
+.authJoinInput[type="email"]:focus,
+.authJoinInput[type="password"]:focus {
+  animation: modalbottom 0.8s ease-in-out forwards;
+}
+
+.authForm__join-form span {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.authJoinInput[type="submit"] {
+  cursor: pointer;
+  color: white;
+  background-color: var(--pink);
+  border: none;
+  border-radius: 5px;
+  width: fit-content;
+  transition: all 0.2s ease-in-out;
+}
+
+.authJoinInput[type="submit"]:hover {
+  background-color: var(--light-pink);
 }

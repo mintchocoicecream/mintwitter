@@ -24,10 +24,10 @@ const Auth = () => {
             <AuthForm />
             <div className="authBtns">
                 <button className="authBtn" onClick={onSocialClick} name="google">
-                    Sign In with Google <FontAwesomeIcon className="authBtnIcon" icon={faGoogle} size="lg" />
+                   <FontAwesomeIcon className="authBtnIcon" icon={faGoogle} size="lg" />Sign In with Google 
                 </button>
                 <button className="authBtn" onClick={onSocialClick} name="github" >
-                    Sign In with Github <FontAwesomeIcon icon={faGithub} className="authBtnIcon github" size="lg" />
+                    <FontAwesomeIcon icon={faGithub} className="authBtnIcon github" size="lg" />Sign In with Github 
                 </button>
             </div>
         </div>
