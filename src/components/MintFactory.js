@@ -68,6 +68,7 @@ const MintFactory = ({ userObj }) => {
     };
 
     return (
+        <div className="factoryForm__main">
         <form onSubmit={onSubmit} className="factoryForm">
             <div className="factoryInput__container">
                 <textarea value={mintweet} className="factoryInput__input" type="text" placeholder="What's on your mind?" onChange={onChange} rows="5" maxLength={150}>
@@ -94,6 +95,7 @@ const MintFactory = ({ userObj }) => {
             )}
                 
         </form>
+        </div>
     )
 }
 

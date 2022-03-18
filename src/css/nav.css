@@ -21,12 +21,8 @@
   color: var(--mint);
 }
 
-.navHome {
-  transition: 0.3s ease-in-out;
-}
-
-.navHome:hover {
-  color: var(--light-mint);
+.navUl li > a {
+  transition: all 0.3s ease-in-out;
 }
 
 .navProfile {
@@ -36,11 +32,13 @@
   text-decoration: none;
 }
 
-.navProfile:hover {
-  color: var(--light-mint);
-}
-
 .navProfile span {
   padding: 5px 0;
   font-size: 12px;
+}
+
+.navHome:hover,
+.navProfile:hover,
+.navWrite:hover {
+  color: var(--light-mint);
 }
