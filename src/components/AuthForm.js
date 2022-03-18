@@ -27,16 +27,16 @@ const AuthForm = () => {
         }
     };
 
-    const joinModal = document.getElementById("joinModal");
-    const modalClose = document.getElementById("authForm__modal-close");
 
     const onClickModal = () => {
+        const joinModal = document.getElementById("joinModal");
         joinModal.style.display = "flex";
     };
 
-    modalClose.onclick = () => {
+    const onClickModalClose = () => {
+        const joinModal = document.getElementById("joinModal");
         joinModal.style.display = "none";
-    }
+    };
 
     const onSubmit = async(event) => {
         event.preventDefault();
@@ -55,11 +55,10 @@ const AuthForm = () => {
         event.preventDefault();
         try{
             let joindata;
-            joindata = await createUserWithEmailAndPassword(authService, email, password);
+            joindata = await createUserWithEmailAndPassword(authService, joinEmail, joinPassword);
             console.log(joindata);
         }catch(error){
             console.log(error.code);
-            setError(error.message)
         }
     };
 
@@ -75,7 +74,7 @@ const AuthForm = () => {
             <button className="authForm__createAccount" onClick={onClickModal}>Create Account</button>
             <div className="authForm__join-modal" id="joinModal">
                 <div className="authForm__modal-closeicon">
-                <span id="authForm__modal-close" class="authForm__modal-close"
+                <span id="authForm__modal-close" onClick={onClickModalClose} className="authForm__modal-close"
             >&times;</span>
                 </div>
             
