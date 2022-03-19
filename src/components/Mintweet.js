@@ -51,7 +51,7 @@ const Mintweet = ({userObj, mintObj, isOwner}) => {
                 </>
                 ) :(
                 <>
-                <h3>{mintObj.creatorDisplayName}</h3>
+                { (userObj.uid === mintObj.creatorId) ? (<h3>{userObj.displayName}</h3>) : (<h3>{mintObj.creatorDisplayName}</h3>)}
                 <h4>{mintObj.text}</h4>
                 {mintObj.attachmentUrl && <img className="nweetImg" src={mintObj.attachmentUrl} alt="attachmentUrl"/>}
                 {isOwner && (
