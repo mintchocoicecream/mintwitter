@@ -35,6 +35,7 @@ const MintFactory = ({ userObj }) => {
                 text: mintweet,
                 createdAt: serverTimestamp(),
                 creatorId: userObj.uid,
+                creatorDisplayName: userObj.displayName,
                 attachmentUrl,
         };
 
