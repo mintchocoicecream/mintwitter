@@ -2,15 +2,9 @@ import { authService, dbService } from "fbase";
 import { updateProfile } from "firebase/auth";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
 
 const Profile = ({refreshUser, userObj}) => {
-    const history = useHistory();
     const [newDisplayName, setNewDisplayName] = useState(userObj.displayName);
-    const onLogOutClick = () => {
-        authService.signOut();
-        history.push("/");
-    };
 
     const getMyTweets = async () => {
         const q = query(
@@ -25,7 +19,7 @@ const Profile = ({refreshUser, userObj}) => {
 
     useEffect( () => {
         getMyTweets();
-    }, []);
+    });
 
     const onChange = (event) => {
         const {
@@ -44,11 +38,20 @@ const Profile = ({refreshUser, userObj}) => {
 
     return (
         <div className="container">
-            <form onSubmit={onSubmit} className="profileForm">
-                <input onChange={onChange} type="text" placeholder="Display name" autoFocus value={newDisplayName} className="formInput" />
-                <input type="submit" value="Update Profile" className="formBtn" />
-            </form>
-            <span className="formBtn cancelBtn logOut" onClick={onLogOutClick}>Log Out</span>
+            <div className="factoryForm__main">
+                <form onSubmit={onSubmit} className="factoryForm profileForm">
+                    <h2>Profile</h2>
+                    <div className="factoryInput__container profile__container">
+                        <span>
+                            <label htmlFor="profileName">이름</label>
+                            <input id="profileName" className="factoryInput__input" onChange={onChange} type="text" placeholder="Display name" autoFocus value={newDisplayName} maxLength="8"  required/>
+                        </span>
+                        <span className="factoryInput__icons">
+                            <input type="submit" value="프로필 저장" className="factoryInput__arrow" />
+                        </span>
+                    </div>
+                </form>
+            </div>
         </div>
     )
 }

@@ -1,0 +1,31 @@
+.profileForm {
+  padding: 0 50px;
+  justify-content: center;
+  align-items: center;
+}
+
+.profileForm h2 {
+  margin: 20px 0;
+  font-size: 25px;
+  background-color: var(--mint);
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+}
+
+.profile__container {
+  align-items: center;
+  width: fit-content;
+  padding: 15px;
+  border: 2px solid var(--mint);
+}
+
+.profile__container span {
+  display: block;
+  padding: 15px;
+}
+
+.profile__container span > input {
+  width: fit-content;
+  margin: 10px 0;
+}

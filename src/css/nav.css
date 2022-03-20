@@ -1,5 +1,4 @@
 .navUl {
-  background-color: pink;
   padding: 5px 5px;
   display: flex;
   position: fixed;
@@ -7,20 +6,24 @@
   align-items: center;
   padding: 20px;
   border-right: 2px solid var(--light-black);
-  width: 100px;
   box-sizing: border-box;
 }
 
 .navUl li {
-  margin: 10px 0;
+  margin: 20px 0;
   padding: 5px 0;
   text-align: center;
 }
 
+.navLogout,
 .navUl a {
+  display: flex;
+  flex-direction: column;
   color: var(--mint);
+  cursor: pointer;
 }
 
+.navLogout,
 .navUl li > a {
   transition: all 0.3s ease-in-out;
 }
@@ -33,12 +36,13 @@
 }
 
 .navProfile span {
+  display: block;
   padding: 5px 0;
   font-size: 12px;
+  font-weight: 500;
 }
 
-.navHome:hover,
-.navProfile:hover,
-.navWrite:hover {
+.navLogout:hover,
+.navUl a:hover {
   color: var(--light-mint);
 }

@@ -3,19 +3,22 @@
   flex-direction: column;
   align-items: center;
   background-color: azure;
-  width: 80%;
+  width: 85%;
   padding: 0 10px;
 }
 
 .factoryForm__main {
-  width: 100%;
-  border: 2px solid #000;
+  display: flex;
+  width: inherit;
+  justify-content: center;
 }
 
 .factoryForm {
   display: flex;
+  width: inherit;
   flex-direction: column;
   align-content: center;
+  justify-content: center;
   margin: 5px;
   border-bottom: 2px solid tomato;
   padding-bottom: 15px;
@@ -23,8 +26,10 @@
 
 .homeDiv {
   border: 2px solid #000;
+  width: 100%;
 }
 
+.factoryInput__label > span,
 .factoryForm input {
   border-radius: 5px;
 }
@@ -34,50 +39,64 @@
   border-radius: 5px;
   display: flex;
   justify-content: center;
+  flex-direction: column;
   width: 100%;
 }
 
 .factoryInput__input {
   display: block;
-  border-radius: 5px;
   padding: 10px 10px;
-  font-weight: 500;
+  font-weight: 600;
   color: rgba(0, 0, 0, 0.698);
   font-size: 15px;
-  border: none;
-  outline: none;
   justify-content: center;
   resize: none;
-  transition: 0.3s ease-in-out;
   font-family: var(--font-basic);
-  width: 600px;
-  box-shadow: 3px 5px rgba(0, 0, 0, 0.048);
+  width: 100%;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.factoryInput__input:focus {
+  outline: none;
+  background-color: rgba(0, 0, 0, 0.027);
 }
 
 .factoryInput__input::placeholder {
   color: rgba(0, 0, 0, 0.541);
+  font-weight: 500;
 }
 
-.factoryInput__input:active,
-.factoryInput__input:focus {
-  outline: 2px solid var(--mint);
+.factoryInput__icons {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .factoryInput__arrow {
+  width: fit-content;
   padding: 10px 10px;
   background-color: var(--mint);
   border: none;
   outline: none;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
   transition: background-color 0.3s ease-in-out;
 }
 
+.factoryInput__label > span:hover,
 .factoryInput__arrow:hover {
-  background-color: var(--light-mint);
+  opacity: 0.8;
+}
+
+.factoryInput__arrow > input {
+  border: none;
+  background-color: inherit;
 }
 
 .factoryInput__addfile {
   display: flex;
+  justify-content: flex-end;
   padding: 5px 0;
   margin: 10px 0;
   width: 100%;
@@ -88,6 +107,17 @@
   justify-content: flex-end;
   cursor: pointer;
   width: 800px;
+}
+
+.factoryInput__label > span {
+  background-color: white;
+  border: 2px solid var(--mint);
+  width: fit-content;
+  padding: 10px 10px;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  transition: background-color 0.3s ease-in-out;
 }
 
 .factoryInput__label span {
@@ -134,20 +164,26 @@
   width: 100%;
   align-items: center;
   justify-content: center;
+  padding: 0 15px;
 }
 
 .nweet__contents {
   display: flex;
-  width: 80%;
+  width: 100%;
   flex-direction: column;
   justify-content: center;
   padding: 15px;
-  border-bottom: 2px solid sandybrown;
+  background-color: sandybrown;
+  /* border-bottom: 2px solid sandybrown; */
   margin: 10px 0;
 }
 
-.nweet__contents h4 {
-  padding: 15px 0;
+.nweet__contents h3 {
+  font-weight: 600;
+}
+
+.nweet__contents-texts {
+  padding: 15px 15px;
 }
 
 .nweet__actions {

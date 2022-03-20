@@ -18,7 +18,7 @@ const MintFactory = ({ userObj }) => {
     const onSubmit = async (e) => {
         e.preventDefault();
         if(mintweet === ""){
-            return;
+            return
         }
 
         let attachmentUrl = "";
@@ -72,15 +72,19 @@ const MintFactory = ({ userObj }) => {
         <div className="factoryForm__main">
         <form onSubmit={onSubmit} className="factoryForm">
             <div className="factoryInput__container">
-                <textarea value={mintweet} className="factoryInput__input" type="text" placeholder="What's on your mind?" onChange={onChange} rows="5" maxLength={150}>
+                <span className="factoryInput__icons">
+                        <input className="factoryInput__arrow"  type="submit" value="트윗하기 &rarr;" />
+               </span>
+                
+                <textarea value={mintweet} className="factoryInput__input" type="text" placeholder="이러쿵저러쿵" onChange={onChange} rows="5" maxLength={150}>
                 </textarea>
-                <input type="submit" value="&rarr;" className="factoryInput__arrow" />
             </div>
             <div className="factoryInput__addfile">
-                <label htmlFor="attach-file" className="factoryInput__label" value="">
+                <label htmlFor="attach-file" className="factoryInput__label">
                     <span>
                         <FontAwesomeIcon icon={faPlus} />
                         <FontAwesomeIcon icon={faImage} />
+                        Add Image
                     </span>    
                 </label>
                 <input id="attach-file" type="file" accept="image/*" onChange={onFileChange}/>
