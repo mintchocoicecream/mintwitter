@@ -2,6 +2,7 @@
   padding: 0 50px;
   justify-content: center;
   align-items: center;
+  border: none;
 }
 
 .profileForm h2 {
@@ -27,5 +28,5 @@
 
 .profile__container span > input {
   width: fit-content;
-  margin: 10px 0;
+  margin: 10px;
 }

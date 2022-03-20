@@ -15,7 +15,6 @@
   text-align: center;
 }
 
-.navLogout,
 .navUl a {
   display: flex;
   flex-direction: column;
@@ -23,7 +22,6 @@
   cursor: pointer;
 }
 
-.navLogout,
 .navUl li > a {
   transition: all 0.3s ease-in-out;
 }
@@ -42,7 +40,6 @@
   font-weight: 500;
 }
 
-.navLogout:hover,
 .navUl a:hover {
   color: var(--light-mint);
 }

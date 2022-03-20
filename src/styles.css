@@ -4,6 +4,7 @@
 @import "css/nav.css";
 @import "css/mintweet.css";
 @import "css/profile.css";
+@import "css/logout.css";
 @import "css/modal.css";
 
 :root {
@@ -73,4 +74,23 @@ footer {
 input {
   border: none;
   outline: none !important;
+}
+
+@keyframes showContainer {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 85%;
+  padding: 0 10px;
+  animation: showContainer 0.8s ease-in-out;
 }

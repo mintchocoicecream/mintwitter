@@ -1,12 +1,3 @@
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: azure;
-  width: 85%;
-  padding: 0 10px;
-}
-
 .factoryForm__main {
   display: flex;
   width: inherit;
@@ -53,12 +44,13 @@
   resize: none;
   font-family: var(--font-basic);
   width: 100%;
+  background-color: rgba(0, 0, 0, 0.027);
   transition: background-color 0.3s ease-in-out;
 }
 
 .factoryInput__input:focus {
   outline: none;
-  background-color: rgba(0, 0, 0, 0.027);
+  background-color: var(--light-pink);
 }
 
 .factoryInput__input::placeholder {
