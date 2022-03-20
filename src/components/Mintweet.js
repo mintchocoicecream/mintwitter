@@ -42,8 +42,11 @@ const Mintweet = ({userObj, mintObj, isOwner}) => {
                 editing ? (
                 <>
                     <form onSubmit={onSubmit} className="nweetEdit">
-                        <input onChange={onChange} type="text" value={newMintweet} required autoFocus className="formInput"/>
-                        <input type="submit" value="Update Mintweet" className="formBtn"/>
+                        <textarea onChange={onChange} type="text" value={newMintweet} className="formInput" rows="5" maxLength={150} autoFocus required></textarea>
+                        <span>
+                            <input type="submit" value="업데이트" className="formBtn"/>
+                        </span>
+                        
                     </form>
                     <span onClick={toggleEditing} className="formBtn cancelBtn">
                         Cancel    
@@ -53,7 +56,11 @@ const Mintweet = ({userObj, mintObj, isOwner}) => {
                 <>
                 { (userObj.uid === mintObj.creatorId) ? (<h3>{userObj.displayName}</h3>) : (<h3>{mintObj.creatorDisplayName}</h3>)}
                 <h4 className="nweet__contents-texts">{mintObj.text}</h4>
-                {mintObj.attachmentUrl && <img className="nweetImg" src={mintObj.attachmentUrl} alt="attachmentUrl"/>}
+                {mintObj.attachmentUrl && 
+                    <div className="nweet__contents-img">
+                        <img className="nweetImg" src={mintObj.attachmentUrl} alt="attachmentUrl"/>
+                    </div>
+                    }
                 {isOwner && (
                     <div className="nweet__actions">
                         <span onClick={onDeleteClick}>

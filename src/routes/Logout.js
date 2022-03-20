@@ -17,7 +17,7 @@ const Logout = () => {
                 <div className="logout__form">
                     <h2>Logout</h2>
                     <div className="logout__box">
-                        <span className="logout__text">아래 버튼을 클릭하시면 로그아웃이 됩니다.</span>
+                        <span className="logout__text">아래 버튼을 클릭하시면 로그아웃이 완료됩니다.</span>
                         <span className="logout__logoutButton" onClick={onLogOutClick}>로그아웃</span>
                     </div>
                    

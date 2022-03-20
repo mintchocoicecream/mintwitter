@@ -51,6 +51,7 @@ nav {
 textarea {
   outline: none !important;
   border: none;
+  resize: none;
 }
 
 input:focus,

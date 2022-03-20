@@ -84,7 +84,7 @@ const MintFactory = ({ userObj }) => {
                     <span>
                         <FontAwesomeIcon icon={faPlus} />
                         <FontAwesomeIcon icon={faImage} />
-                        Add Image
+                        <h5>Add Image</h5>
                     </span>    
                 </label>
                 <input id="attach-file" type="file" accept="image/*" onChange={onFileChange}/>

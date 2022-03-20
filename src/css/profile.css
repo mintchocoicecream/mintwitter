@@ -30,3 +30,9 @@
   width: fit-content;
   margin: 10px;
 }
+
+.profile__icon {
+  display: flex;
+  width: fit-content;
+  margin-bottom: 10px;
+}

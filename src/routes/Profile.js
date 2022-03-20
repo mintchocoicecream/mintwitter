@@ -42,6 +42,10 @@ const Profile = ({refreshUser, userObj}) => {
                 <form onSubmit={onSubmit} className="factoryForm profileForm">
                     <h2>Profile</h2>
                     <div className="factoryInput__container profile__container">
+                        <div className="profile__icon">
+                            <img src={require("../css/image/mintchocobear.png")} width="64px" alt="mintbear" />
+                        </div>
+                            
                         <span>
                             <label htmlFor="profileName">이름</label>
                             <input id="profileName" className="factoryInput__input" onChange={onChange} type="text" placeholder="Display name" autoFocus value={newDisplayName} maxLength="8"  required/>

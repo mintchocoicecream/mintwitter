@@ -4,6 +4,17 @@
   justify-content: center;
 }
 
+.homeDiv {
+  background-color: var(--mint);
+  margin-top: 10px;
+  width: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}
+
 .factoryForm {
   display: flex;
   width: inherit;
@@ -11,13 +22,47 @@
   align-content: center;
   justify-content: center;
   margin: 5px;
-  border-bottom: 2px solid tomato;
+  border-bottom: 2px solid var(--mint);
   padding-bottom: 15px;
 }
 
-.homeDiv {
-  border: 2px solid #000;
-  width: 100%;
+.nweetEdit {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid black;
+  margin-bottom: 8px;
+}
+
+.formInput {
+  padding: 10px;
+  font-size: 15px;
+  font-weight: normal;
+  opacity: 0.8;
+  font-family: var(--font-basic);
+}
+
+.nweetEdit span {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.nweetEdit input[type="submit"] {
+  width: fit-content;
+  margin: 0 5px 5px 0;
+  padding: 5px;
+  background-color: var(--light-mint);
+  cursor: pointer;
+  border-radius: 5px;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.nweet {
+  display: flex;
+  flex-direction: column;
+  width: inherit;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
 }
 
 .factoryInput__label > span,
@@ -36,6 +81,7 @@
 
 .factoryInput__input {
   display: block;
+  margin-top: 3px;
   padding: 10px 10px;
   font-weight: 600;
   color: rgba(0, 0, 0, 0.698);
@@ -45,12 +91,12 @@
   font-family: var(--font-basic);
   width: 100%;
   background-color: rgba(0, 0, 0, 0.027);
-  transition: background-color 0.3s ease-in-out;
+  border-radius: 5px;
 }
 
 .factoryInput__input:focus {
   outline: none;
-  background-color: var(--light-pink);
+  border: 2px solid var(--mint);
 }
 
 .factoryInput__input::placeholder {
@@ -61,6 +107,15 @@
 .factoryInput__icons {
   display: flex;
   justify-content: flex-end;
+}
+
+@keyframes uploadTweet {
+  from {
+    transform: translateX(5px);
+  }
+  to {
+    transform: translateX(10px);
+  }
 }
 
 .factoryInput__arrow {
@@ -76,9 +131,16 @@
   transition: background-color 0.3s ease-in-out;
 }
 
+.factoryInput__arrow:hover {
+  animation: uploadTweet 0.5s ease-in-out forwards;
+}
+
+.nweetEdit input[type="submit"]:hover,
+.cancelBtn:hover,
+.nweet__actions span:hover,
 .factoryInput__label > span:hover,
 .factoryInput__arrow:hover {
-  opacity: 0.8;
+  opacity: 0.7;
 }
 
 .factoryInput__arrow > input {
@@ -97,7 +159,6 @@
 .factoryInput__label {
   display: flex;
   justify-content: flex-end;
-  cursor: pointer;
   width: 800px;
 }
 
@@ -110,14 +171,11 @@
   align-items: center;
   font-weight: 600;
   transition: background-color 0.3s ease-in-out;
+  cursor: pointer;
 }
 
-.factoryInput__label span {
-  display: block;
-}
-
-.factriInput__label span i {
-  margin-right: 12px;
+.factoryInput__label h5 {
+  margin-left: 10px;
 }
 
 .factoryInput__addfile input[type="file"] {
@@ -150,13 +208,14 @@
   color: var(--mint);
 }
 
-.nweet {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  padding: 0 15px;
+@keyframes nweetContents {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .nweet__contents {
@@ -165,17 +224,26 @@
   flex-direction: column;
   justify-content: center;
   padding: 15px;
-  background-color: sandybrown;
-  /* border-bottom: 2px solid sandybrown; */
+  background-color: white;
+  border-radius: 5px;
+  border-bottom: 5px solid var(--pink);
   margin: 10px 0;
+  opacity: 0;
+  animation: nweetContents 1s ease-in-out forwards;
+  animation-delay: 0.5s;
 }
 
 .nweet__contents h3 {
-  font-weight: 600;
+  font-weight: bold;
+  background-color: var(--pink);
+  width: fit-content;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 .nweet__contents-texts {
   padding: 15px 15px;
+  font-weight: normal;
 }
 
 .nweet__actions {
@@ -183,8 +251,32 @@
   border-top: 2px solid rgba(0, 0, 0, 0.4);
   margin-top: 10px;
   padding: 10px 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.nweet__contents-img {
+  display: flex;
+  margin-left: 20px;
 }
 
 .nweetImg {
   max-width: 60%;
+}
+
+.nweet__actions span {
+  display: flex;
+  width: fit-content;
+  margin: 5px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #000;
+  color: white;
+  cursor: pointer;
+}
+
+.cancelBtn {
+  margin: 3px;
+  cursor: pointer;
+  width: fit-content;
 }
