@@ -27,8 +27,8 @@ const Navigation = ({userObj}) => {
                     <li>
                         <Link className="navProfile" to="/profile">
                             <FontAwesomeIcon icon={faUser} size="2x" />
-                            <span>
-                                {userObj.displayName? `${userObj.displayName}'s Profile` : "Profile" }</span>
+                            <span>{userObj.displayName}'s</span>
+                            <span>Profile</span>
                         </Link>
                     </li>
                     <li>
