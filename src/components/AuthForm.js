@@ -80,9 +80,9 @@ const AuthForm = () => {
             
                 <h1>Join</h1>
                 <form onSubmit={onSignSubmit} className="authForm__join-form">
-                    <label for="joinEmail">Email</label>
+                    <label htmlFor="joinEmail">Email</label>
                     <input id="joinEmail" className="authJoinInput" type="email" name="joinemail" placeholder="example@email.com" value={joinEmail} onChange={onJoinChange} required/>
-                    <label for="joinPassword">Password</label>
+                    <label htmlFor="joinPassword">Password</label>
                     <input id="joinPassword" className="authJoinInput" type="password" name="joinpassword" minLength="8" placeholder="password" value={joinPassword} onChange={onJoinChange} required/>
                     <span>
                         <input className="authJoinInput" type="submit" value="Create Acoount" />

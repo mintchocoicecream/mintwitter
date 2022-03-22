@@ -13,7 +13,8 @@ function App() {
           displayName: user.displayName,
           uid: user.uid,
           profilePhoto: user.photoURL,
-          updateProfile: (args) => updateCurrentUser(user, {displayName: user.displayName, profilePhoto: user.photoURL}),
+          uemail: user.email,
+          updateProfile: (args) => updateCurrentUser(user, {displayName: user.displayName, profilePhoto: user.photoURL, uemail: user.email}),
         });
       }else {
         setUserObj(null);
@@ -28,7 +29,8 @@ function App() {
       displayName: user.displayName,
       uid: user.uid,
       profilePhoto: user.photoURL,
-      updateProfile: (args) => updateCurrentUser(user, {displayName: user.displayName, profilePhoto: user.photoURL}),
+      uemail: user.email,
+      updateProfile: (args) => updateCurrentUser(user, {displayName: user.displayName, profilePhoto: user.photoURL, uemail: user.email}),
     });
   }
 

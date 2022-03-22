@@ -97,6 +97,8 @@ const Profile = ({refreshUser, userObj}) => {
                             <span className="profile__nickname">
                                 <label htmlFor="profileName">이름</label>
                                 <input id="profileName" className="factoryInput__input profile__input" onChange={onChange} type="text" placeholder="Display name" autoFocus value={newDisplayName} maxLength="8"  required/>
+                                <label htmlFor="profileEmail" className="profile__email">이메일</label>
+                                <input id="profileEmail" className="factoryInput__input profile__input" type="text" placeholder="Display name" autoFocus value={userObj.uemail} disabled/>
                             </span>
                         </div>
                         <input type="submit" value="프로필 저장" className="profile__arrow" />

@@ -99,6 +99,7 @@
 
 .profile__nickname label {
   width: fit-content;
+  margin: 10px 0;
 }
 
 .profile__input {
