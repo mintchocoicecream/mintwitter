@@ -300,11 +300,7 @@
   transition: all 0.3s ease-in-out;
 }
 
-@keyframes likesheart {
-}
-
-.nweet__likes:hover,
-.nweet__likes:active {
+.nweet__likes:hover a {
   color: tomato;
 }
 

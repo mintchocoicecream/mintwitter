@@ -13,7 +13,7 @@ function App() {
           displayName: user.displayName,
           uid: user.uid,
           profilePhoto: user.photoURL,
-          uemail: user.email,
+          email: user.email,
           updateProfile: (args) => updateCurrentUser(user, {displayName: user.displayName, profilePhoto: user.photoURL, uemail: user.email}),
         });
       }else {

@@ -36,7 +36,10 @@ const MintFactory = ({ userObj }) => {
                 createdAt: serverTimestamp(),
                 creatorId: userObj.uid,
                 creatorDisplayName: userObj.displayName,
+                profile: userObj.profilePhoto,
                 attachmentUrl,
+                likes: [],
+                activedLikes: false,
         };
 
         try{

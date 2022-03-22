@@ -8,8 +8,11 @@ import React, { useState } from "react";
 const Mintweet = ({userObj, mintObj, isOwner}) => {
     const [editing, setEditing] = useState(false);
     const [newMintweet, setNewMintweet] = useState(mintObj.text);
+    const [heart, setHeart] = useState(false);
+    const [newlikes, setNewlikes] = useState(mintObj.likes.includes(userObj?.email));
     const mintweetRef = doc(dbService, "mintweets", `${mintObj.id}`);
     const urlRef = ref(storageService, mintObj.attachmentUrl);
+
     const onDeleteClick = async () => {
         const ok = window.confirm("정말 이 게시글을 삭제하시겠습니까?");
         if(ok){
@@ -20,6 +23,7 @@ const Mintweet = ({userObj, mintObj, isOwner}) => {
         }
     }
     const toggleEditing = () => setEditing((prev) => !prev);
+    
     const onSubmit = async (event) => {
         event.preventDefault();
         // const mintweetRef = doc(dbService, "mintweets", `${mintObj.id}`);
@@ -27,12 +31,55 @@ const Mintweet = ({userObj, mintObj, isOwner}) => {
             text: newMintweet,
         });
         setEditing(false);
-    }
+    };
+
     const onChange = (event) => {
         const {target: {value},
      } = event;
      setNewMintweet(value);
-    }
+    };
+
+    const onClickLikes = async () => {
+        const likesArr = [userObj.email, ...mintObj.likes];
+        const chkLikesArr = mintObj.likes.includes(userObj.email);
+
+        if(chkLikesArr) {
+            const filteredLikesArr = likesArr.filter((value, index) => {
+                return value !== userObj.email;
+            });
+
+            await updateDoc(mintweetRef, {
+                likes: filteredLikesArr,
+                activedLikes: false,
+            });
+
+            setHeart(false);
+            setNewlikes(false);
+        }
+
+        if(heart === false){
+            await updateDoc(mintweetRef, {
+                likes: [...new Set(likesArr)],
+                activedLikes: true,
+            })
+            setNewlikes(true);
+            
+        }else if(heart === true) {
+            const filteredLikesArr = likesArr.filter((value, index) => {
+                return value !== userObj.email;
+            });
+
+            await updateDoc(mintweetRef, {
+                likes: filteredLikesArr,
+                activedLikes: false,
+            });
+            setNewlikes(false);
+        };
+
+        setHeart(!heart);
+
+    };
+
 
 
     return(
@@ -67,10 +114,15 @@ const Mintweet = ({userObj, mintObj, isOwner}) => {
                     </div>
                     }
                     <div className="nweet__icons">
-                        <span className="nweet__likes">
-                            <FontAwesomeIcon icon={faHeart} />
-                            <span className="nweet__likesCount">00 likes</span>
-                        </span>
+                        <span className="nweet__likes" onClick={onClickLikes}>
+                            {newlikes? (
+                                <FontAwesomeIcon icon={faHeart} id="likes" style={{color: "tomato"}} />
+                            ) : (
+                                <FontAwesomeIcon icon={faHeart} id="likes" style={{color: "white"}}/>
+                            )}
+                            
+                            <span className="nweet__likesCount">{mintObj.likes.length} likes</span>
+                        </span>   
                         <span className="nweet__comments">
                             <FontAwesomeIcon icon={faCommentDots} />
                             <span className="nweet__commetnsCount">00 coments</span>
