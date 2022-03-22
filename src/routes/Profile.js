@@ -72,6 +72,7 @@ const Profile = ({refreshUser, userObj}) => {
             await updateProfile(authService.currentUser, {displayName: newDisplayName});
         }
         refreshUser();
+        window.location.reload();
     };
 
     
@@ -98,7 +99,7 @@ const Profile = ({refreshUser, userObj}) => {
                                 <label htmlFor="profileName">이름</label>
                                 <input id="profileName" className="factoryInput__input profile__input" onChange={onChange} type="text" placeholder="Display name" autoFocus value={newDisplayName} maxLength="8"  required/>
                                 <label htmlFor="profileEmail" className="profile__email">이메일</label>
-                                <input id="profileEmail" className="factoryInput__input profile__input" type="text" placeholder="Display name" autoFocus value={userObj.email} disabled/>
+                                <input id="profileEmail" className="factoryInput__input profile__input" type="text" autoFocus value={userObj.email} disabled/>
                             </span>
                         </div>
                         <input type="submit" value="프로필 저장" className="profile__arrow" />
