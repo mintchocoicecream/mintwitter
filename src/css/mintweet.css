@@ -222,14 +222,19 @@
   display: flex;
   align-items: center;
   width: fit-content;
-  background-color: var(--pink);
-  border-radius: 5px;
-  padding: 5px 8px;
 }
 
 .nweet__writer img {
   border-radius: 5px;
   margin-right: 5px;
+  background-color: var(--mint);
+  border: 2px solid var(--mint);
+}
+
+.nweet__writer h3 {
+  background-color: var(--pink);
+  padding: 5px;
+  border-radius: 5px;
 }
 
 .nweet__contents {
@@ -300,7 +305,7 @@
   transition: all 0.3s ease-in-out;
 }
 
-.nweet__likes:hover a {
+.nweet__likes:hover {
   color: tomato;
 }
 
