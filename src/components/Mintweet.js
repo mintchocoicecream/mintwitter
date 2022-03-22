@@ -2,7 +2,7 @@ import { dbService, storageService } from "fbase";
 import { deleteDoc, doc, updateDoc } from "firebase/firestore";
 import { deleteObject, ref } from "firebase/storage";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
+import { faTrash, faPencilAlt, faHeart, faCommentDots } from "@fortawesome/free-solid-svg-icons";
 import React, { useState } from "react";
 
 const Mintweet = ({userObj, mintObj, isOwner}) => {
@@ -54,13 +54,28 @@ const Mintweet = ({userObj, mintObj, isOwner}) => {
                 </>
                 ) :(
                 <>
+                <div className="nweet__writer">
+                {isOwner && (
+                        <img src={userObj.profilePhoto} width="50px" alt="profilePhoto" style={{backgroundImage: userObj.profilePhoto,}}/>
+                )} 
                 { (userObj.uid === mintObj.creatorId) ? (<h3>{userObj.displayName}</h3>) : (<h3>{mintObj.creatorDisplayName}</h3>)}
+                </div>
                 <h4 className="nweet__contents-texts">{mintObj.text}</h4>
                 {mintObj.attachmentUrl && 
                     <div className="nweet__contents-img">
                         <img className="nweetImg" src={mintObj.attachmentUrl} alt="attachmentUrl"/>
                     </div>
                     }
+                    <div className="nweet__icons">
+                        <span className="nweet__likes">
+                            <FontAwesomeIcon icon={faHeart} />
+                            <span className="nweet__likesCount">00 likes</span>
+                        </span>
+                        <span className="nweet__comments">
+                            <FontAwesomeIcon icon={faCommentDots} />
+                            <span className="nweet__commetnsCount">00 coments</span>
+                        </span>
+                    </div>
                 {isOwner && (
                     <div className="nweet__actions">
                         <span onClick={onDeleteClick}>

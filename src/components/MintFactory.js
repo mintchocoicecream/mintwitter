@@ -73,7 +73,7 @@ const MintFactory = ({ userObj }) => {
         <form onSubmit={onSubmit} className="factoryForm">
             <div className="factoryInput__container">
                 <span className="factoryInput__icons">
-                        <input className="factoryInput__arrow"  type="submit" value="트윗하기 &rarr;" />
+                        <input className="factoryInput__arrow"  type="submit" value="업로드 &rarr;" />
                </span>
                 
                 <textarea value={mintweet} className="factoryInput__input" type="text" placeholder="이러쿵저러쿵" onChange={onChange} rows="5" maxLength={150}>
@@ -84,7 +84,7 @@ const MintFactory = ({ userObj }) => {
                     <span>
                         <FontAwesomeIcon icon={faPlus} />
                         <FontAwesomeIcon icon={faImage} />
-                        <h5>Add Image</h5>
+                        <h5>image</h5>
                     </span>    
                 </label>
                 <input id="attach-file" type="file" accept="image/*" onChange={onFileChange}/>
