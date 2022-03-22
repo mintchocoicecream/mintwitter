@@ -68,8 +68,10 @@ button {
 footer {
   font-size: 13px;
   color: var(--light-black);
-  text-align: end;
-  padding: 40px 20px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
 }
 
 input {
