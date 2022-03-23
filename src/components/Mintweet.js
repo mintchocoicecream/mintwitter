@@ -13,7 +13,10 @@ const Mintweet = ({userObj, mintObj, isOwner}) => {
     const [newlikes, setNewlikes] = useState(mintObj.likes.includes(userObj?.email));
     const [commentToggle, setCommentToggle] = useState(false);
     const mintweetRef = doc(dbService, "mintweets", `${mintObj.id}`);
+    // const commentRef = doc(dbService, "mintweets", `${mintObj.id}`, "comments");
     const urlRef = ref(storageService, mintObj.attachmentUrl);
+
+    // console.log(commentRef);
 
 
     const onDeleteClick = async () => {

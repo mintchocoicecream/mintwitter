@@ -18,7 +18,7 @@ const Comments = ({userObj, mintObj, commentOwner, commentObj}) => {
             <div className="comments__comment">
                 <div className="comments__comment-writer">
                     <span className="comment__writer-img">
-                        <img src={commentObj.profile} width="30px" alt="profileImg" />
+                        <img src={commentObj.profile} width="30px" height="30px" alt="profileImg" />
                     </span>
                     <span className="comment__wirter-name">{commentObj.creatorDisplayName}</span>
                 </div>

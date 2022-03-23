@@ -43,7 +43,7 @@ const AuthForm = () => {
         try {
             let data;
                 data = await signInWithEmailAndPassword(authService, email, password);
-            console.log(data);
+            // console.log(data);
         }catch(error){
             console.log(error.code);
             setError(error.message)
