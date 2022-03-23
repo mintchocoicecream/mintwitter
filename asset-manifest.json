@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/mintwitter/static/css/main.6f8d1012.css",
-    "main.js": "/mintwitter/static/js/main.9bed1762.js",
+    "main.js": "/mintwitter/static/js/main.40b961bc.js",
     "index.html": "/mintwitter/index.html",
     "main.6f8d1012.css.map": "/mintwitter/static/css/main.6f8d1012.css.map",
-    "main.9bed1762.js.map": "/mintwitter/static/js/main.9bed1762.js.map"
+    "main.40b961bc.js.map": "/mintwitter/static/js/main.40b961bc.js.map"
   },
   "entrypoints": [
     "static/css/main.6f8d1012.css",
-    "static/js/main.9bed1762.js"
+    "static/js/main.40b961bc.js"
   ]
 }
