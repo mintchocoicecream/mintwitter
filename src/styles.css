@@ -6,6 +6,7 @@
 @import "css/profile.css";
 @import "css/logout.css";
 @import "css/modal.css";
+@import "css/comments.css";
 
 :root {
   --mint: #b6ebdc;

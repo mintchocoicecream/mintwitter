@@ -362,17 +362,24 @@
 .comment__write {
   padding: 4px 5px;
   display: flex;
+  margin-bottom: 10px;
 }
 
 .comment__write input {
   padding: 5px 10px;
-  font-weight: bold;
+  font-weight: normal;
 }
 
 .comment__write input[type="text"] {
   width: 100%;
   border-bottom-left-radius: 10px;
   border-top-left-radius: 10px;
+  font-family: var(--font-basic);
+  transition: all 0.3s ease-in-out;
+}
+
+.comment__write input[type="text"]::placeholder {
+  opacity: 0.7;
 }
 
 .comment__write input[type="text"]:focus {
@@ -381,12 +388,13 @@
 
 .comment__write input[type="submit"] {
   border-left: 2px solid var(--mint);
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
   cursor: pointer;
   background-color: var(--mint);
   color: white;
   transition: all 0.3s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .comment__write input[type="submit"]:hover {

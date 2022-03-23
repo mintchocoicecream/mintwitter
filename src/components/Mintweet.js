@@ -4,6 +4,7 @@ import { deleteObject, ref } from "firebase/storage";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPencilAlt, faHeart, faCommentDots } from "@fortawesome/free-solid-svg-icons";
 import React, { useState } from "react";
+import CommentWrite from "./Comment";
 
 const Mintweet = ({userObj, mintObj, isOwner}) => {
     const [editing, setEditing] = useState(false);
@@ -11,9 +12,9 @@ const Mintweet = ({userObj, mintObj, isOwner}) => {
     const [heart, setHeart] = useState(false);
     const [newlikes, setNewlikes] = useState(mintObj.likes.includes(userObj?.email));
     const [commentToggle, setCommentToggle] = useState(false);
-    const [comment, setComment] = useState("");
     const mintweetRef = doc(dbService, "mintweets", `${mintObj.id}`);
     const urlRef = ref(storageService, mintObj.attachmentUrl);
+
 
     const onDeleteClick = async () => {
         const ok = window.confirm("정말 이 게시글을 삭제하시겠습니까?");
@@ -24,7 +25,6 @@ const Mintweet = ({userObj, mintObj, isOwner}) => {
             }
         }
     };
-
 
     const onChange = (event) => {
         const {target: {value},
@@ -86,22 +86,7 @@ const Mintweet = ({userObj, mintObj, isOwner}) => {
 
     };
 
-    // 게시글 댓글
-    
     const onClickComment = () => setCommentToggle((prev) => !prev);
-
-    const onCommentChange = (event) => {
-        const {target: {value}} = event;
-        setComment(value);
-    };
-
-    const onCommentSubmit = async (event) => {
-        event.preventDefault();
-
-        
-    }
-
-
 
     return(
         <div className="nweet">
@@ -112,7 +97,7 @@ const Mintweet = ({userObj, mintObj, isOwner}) => {
                     <form onSubmit={onSubmit} className="nweetEdit">
                         <textarea onChange={onChange} type="text" value={newMintweet} className="formInput" rows="5" maxLength={150} autoFocus required></textarea>
                         <span>
-                            <input type="submit" value={comment} className="formBtn"/>
+                            <input type="submit" value="수정" className="formBtn"/>
                         </span>
                         
                     </form>
@@ -144,29 +129,11 @@ const Mintweet = ({userObj, mintObj, isOwner}) => {
                         </span>   
                         <span className="nweet__icon-comments" onClick={onClickComment}>
                             <FontAwesomeIcon icon={faCommentDots} />
-                            <span className="nweet__commetnsCount">00 coments</span>
+                            <span className="nweet__commetnsCount">coments</span>
                         </span>
                     </div>
                     {commentToggle && 
-                     <div id="nweet__comments" className="nweet__comments">
-                        <span className="nweet__comments-title">댓글</span>
-                        <form onSubmit={onCommentSubmit}  className="comment__write">
-                            <input type="text" onChange={onCommentChange} placeholder="comment" maxLength="120" />
-                            <input type="submit" value="입력" />
-                        </form>
-                        <div className="nweet__coments-lists">
-                            <div className="nweet__coments-list">
-                                <div className="nweet__coments-list-writer">
-                                    <span>프로필이미지</span>
-                                    <span>작성자</span>
-                                </div>
-                                <div className="nweet__coments-list-text">
-                                    <span>작성글</span>
-                                    <span><FontAwesomeIcon icon={faTrash} /></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                     <CommentWrite userObj={userObj} mintObj={mintObj} isOwner={isOwner} />
                     }
                    
                 {isOwner && (
