@@ -10,6 +10,8 @@ const Mintweet = ({userObj, mintObj, isOwner}) => {
     const [newMintweet, setNewMintweet] = useState(mintObj.text);
     const [heart, setHeart] = useState(false);
     const [newlikes, setNewlikes] = useState(mintObj.likes.includes(userObj?.email));
+    const [commentToggle, setCommentToggle] = useState(false);
+    const [comment, setComment] = useState("");
     const mintweetRef = doc(dbService, "mintweets", `${mintObj.id}`);
     const urlRef = ref(storageService, mintObj.attachmentUrl);
 
@@ -21,7 +23,15 @@ const Mintweet = ({userObj, mintObj, isOwner}) => {
                 await deleteObject(urlRef);
             }
         }
-    }
+    };
+
+
+    const onChange = (event) => {
+        const {target: {value},
+     } = event;
+     setNewMintweet(value);
+    };
+
     const toggleEditing = () => setEditing((prev) => !prev);
     
     const onSubmit = async (event) => {
@@ -33,11 +43,7 @@ const Mintweet = ({userObj, mintObj, isOwner}) => {
         setEditing(false);
     };
 
-    const onChange = (event) => {
-        const {target: {value},
-     } = event;
-     setNewMintweet(value);
-    };
+    // 좋아요 버튼
 
     const onClickLikes = async () => {
         const likesArr = [userObj.email, ...mintObj.likes];
@@ -80,6 +86,21 @@ const Mintweet = ({userObj, mintObj, isOwner}) => {
 
     };
 
+    // 게시글 댓글
+    
+    const onClickComment = () => setCommentToggle((prev) => !prev);
+
+    const onCommentChange = (event) => {
+        const {target: {value}} = event;
+        setComment(value);
+    };
+
+    const onCommentSubmit = async (event) => {
+        event.preventDefault();
+
+        
+    }
+
 
 
     return(
@@ -91,7 +112,7 @@ const Mintweet = ({userObj, mintObj, isOwner}) => {
                     <form onSubmit={onSubmit} className="nweetEdit">
                         <textarea onChange={onChange} type="text" value={newMintweet} className="formInput" rows="5" maxLength={150} autoFocus required></textarea>
                         <span>
-                            <input type="submit" value="업데이트" className="formBtn"/>
+                            <input type="submit" value={comment} className="formBtn"/>
                         </span>
                         
                     </form>
@@ -121,11 +142,33 @@ const Mintweet = ({userObj, mintObj, isOwner}) => {
                             
                             <span className="nweet__likesCount">{mintObj.likes.length} likes</span>
                         </span>   
-                        <span className="nweet__comments">
+                        <span className="nweet__icon-comments" onClick={onClickComment}>
                             <FontAwesomeIcon icon={faCommentDots} />
                             <span className="nweet__commetnsCount">00 coments</span>
                         </span>
                     </div>
+                    {commentToggle && 
+                     <div id="nweet__comments" className="nweet__comments">
+                        <span className="nweet__comments-title">댓글</span>
+                        <form onSubmit={onCommentSubmit}  className="comment__write">
+                            <input type="text" onChange={onCommentChange} placeholder="comment" maxLength="120" />
+                            <input type="submit" value="입력" />
+                        </form>
+                        <div className="nweet__coments-lists">
+                            <div className="nweet__coments-list">
+                                <div className="nweet__coments-list-writer">
+                                    <span>프로필이미지</span>
+                                    <span>작성자</span>
+                                </div>
+                                <div className="nweet__coments-list-text">
+                                    <span>작성글</span>
+                                    <span><FontAwesomeIcon icon={faTrash} /></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    }
+                   
                 {isOwner && (
                     <div className="nweet__actions">
                         <span onClick={onDeleteClick}>
