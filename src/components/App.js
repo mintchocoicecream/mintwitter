@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import AppRouter from 'components/Router';
+import Loading from './loading';
 import {authService} from "fbase";
 import { updateCurrentUser } from 'firebase/auth';
 
@@ -23,6 +24,8 @@ function App() {
     });
   }, []);
 
+
+
   const refreshUser = () => {
     const user = authService.currentUser;
     setUserObj({
@@ -36,7 +39,7 @@ function App() {
 
   return (
     <>
-      {init ? <AppRouter refreshUser={refreshUser} isLoggedIn={Boolean(userObj)} userObj={userObj}/> : "Initializing..."}
+      {init ? <AppRouter refreshUser={refreshUser} isLoggedIn={Boolean(userObj)} userObj={userObj}/> : <Loading />}
     </>
     );
 }

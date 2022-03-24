@@ -1,0 +1,30 @@
+.loading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading__text {
+  margin-top: 20px;
+  font-size: 18px;
+  background-color: var(--pink);
+  padding: 10px 20px;
+  border-radius: 20px;
+  color: white;
+}
+
+@keyframes loading {
+  from {
+    transform: rotateZ(360deg);
+  }
+  to {
+  }
+}
+
+.loading__icon {
+  font-size: xx-large;
+  margin-top: 25px;
+  color: var(--mint);
+  animation: loading 2s ease-in-out infinite;
+}

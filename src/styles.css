@@ -7,6 +7,7 @@
 @import "css/logout.css";
 @import "css/modal.css";
 @import "css/comments.css";
+@import "css/loading.css";
 
 :root {
   --mint: #b6ebdc;
@@ -35,7 +36,6 @@ body {
 
 #root {
   display: flex;
-  width: 100vw;
   padding: 0 70px;
   margin: 7% 0;
   justify-content: center;
