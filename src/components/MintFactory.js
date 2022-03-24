@@ -30,10 +30,13 @@ const MintFactory = ({ userObj }) => {
             //storage에 있는 파일 URL로 다운로드 받기
             attachmentUrl = await getDownloadURL(response.ref);
         }
+        
+        let date = new Date();
+
         //트윗할 때 메시지와 사진도 같이 firestore에 생성
         const mintweetPost = {
                 text: mintweet,
-                createdAt: serverTimestamp(),
+                createdAt: date.toLocaleString(),
                 creatorId: userObj.uid,
                 creatorDisplayName: userObj.displayName,
                 profile: userObj.profilePhoto,

@@ -111,30 +111,22 @@
   justify-content: flex-end;
 }
 
-@keyframes uploadTweet {
-  from {
-    transform: translateX(5px);
-  }
-  to {
-    transform: translateX(10px);
-  }
-}
-
 .factoryInput__arrow {
   width: fit-content;
-  padding: 10px 10px;
+  padding: 5px 10px;
   background-color: var(--mint);
+  color: white;
   border: none;
   outline: none;
   cursor: pointer;
   display: flex;
   align-items: center;
   font-weight: 600;
-  transition: background-color 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .factoryInput__arrow:hover {
-  animation: uploadTweet 0.5s ease-in-out forwards;
+  opacity: 0.7;
 }
 
 .nweetEdit input[type="submit"]:hover,
@@ -277,6 +269,13 @@
 
 .nweetImg {
   max-width: 60%;
+}
+
+.nweet__contents-createDate {
+  display: flex;
+  justify-content: flex-end;
+  opacity: 0.2;
+  font-size: 12px;
 }
 
 .nweet__icons {

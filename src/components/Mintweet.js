@@ -13,10 +13,7 @@ const Mintweet = ({userObj, mintObj, isOwner}) => {
     const [newlikes, setNewlikes] = useState(mintObj.likes.includes(userObj?.email));
     const [commentToggle, setCommentToggle] = useState(false);
     const mintweetRef = doc(dbService, "mintweets", `${mintObj.id}`);
-    // const commentRef = doc(dbService, "mintweets", `${mintObj.id}`, "comments");
     const urlRef = ref(storageService, mintObj.attachmentUrl);
-
-    // console.log(commentRef);
 
 
     const onDeleteClick = async () => {
@@ -120,6 +117,9 @@ const Mintweet = ({userObj, mintObj, isOwner}) => {
                         <img className="nweetImg" src={mintObj.attachmentUrl} alt="attachmentUrl"/>
                     </div>
                     }
+                <div className="nweet__contents-createDate">
+                    <span>{mintObj.createdAt}</span>
+                </div>
                     <div className="nweet__icons">
                         <span className="nweet__likes" onClick={onClickLikes}>
                             {newlikes? (

@@ -6,9 +6,6 @@ import Comments from "./commentLists";
 const CommentWrite = ({ userObj, mintObj, isOwner }) => {
     const [comment, setComment] = useState("");
     const today = new Date();   
-    const year = today.getFullYear(); 
-    const month = today.getMonth() + 1;  
-    const date = today.getDate();  
 
     const onCommentChange = (event) => {
         const {target: {value}} = event;
@@ -22,9 +19,11 @@ const CommentWrite = ({ userObj, mintObj, isOwner }) => {
             return
         };
 
+        let date = new Date();
+
         const mintweetComent = {
             text: comment,
-            createdAt: year, month, date,
+            createdAt: date.toLocaleString(),
             creatorId: userObj.uid,
             creatorDisplayName: userObj.displayName,
             profile: userObj.profilePhoto,
