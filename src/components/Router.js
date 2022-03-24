@@ -4,6 +4,7 @@ import Auth from "routes/Auth";
 import Home from "routes/Home";
 import Navigation from "components/Navigation";
 import Profile from "routes/Profile";
+import MyContents from "routes/Mycontents";
 import Logout from "routes/Logout";
 
 const AppRouter = ({refreshUser, isLoggedIn, userObj}) => {
@@ -15,6 +16,9 @@ const AppRouter = ({refreshUser, isLoggedIn, userObj}) => {
                     <Navigation userObj={userObj} />
                     <Route exact path="/">
                         <Home userObj={userObj} />
+                    </Route>
+                    <Route exact path="/myContents">
+                        <MyContents userObj={userObj} />
                     </Route>
                     <Route exact path="/profile">
                         <Profile userObj={userObj} refreshUser={refreshUser}/>

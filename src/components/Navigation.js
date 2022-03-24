@@ -27,16 +27,17 @@ const Navigation = ({userObj}) => {
                     <li>
                         <Link className="navProfile" to="/profile">
                             <FontAwesomeIcon icon={faUser} size="2x" />
-                            <span>{userObj.displayName}'s</span>
+                            <span className="userName">{userObj.displayName}'s</span>
                             <span>Profile</span>
                         </Link>
                     </li>
                     <li>
-                        <Link className="navWrite" to="/">
+                        <Link className="navDiary" to="/myContents">
                             <FontAwesomeIcon icon={faPenToSquare} size="2x" />
-                            <span>
-                                Post
+                            <span className="userName">
+                               {userObj.displayName}'s
                             </span>
+                            <span>Diary</span>
                         </Link>
                     </li>
                     <li>

@@ -5,7 +5,6 @@ import Comments from "./commentLists";
 
 const CommentWrite = ({ userObj, mintObj, isOwner }) => {
     const [comment, setComment] = useState("");
-    const today = new Date();   
 
     const onCommentChange = (event) => {
         const {target: {value}} = event;
@@ -59,7 +58,7 @@ const CommentWrite = ({ userObj, mintObj, isOwner }) => {
             }));
             SetCommentArr(commentsArr);
         });
-        }, []);
+        });
 
     return (
         <>
@@ -67,7 +66,7 @@ const CommentWrite = ({ userObj, mintObj, isOwner }) => {
                 <div className="nweet__comments-form">
                     <span className="nweet__comments-title">댓글</span>
                     <form onSubmit={onCommentSubmit}  className="comment__write">
-                        <input type="text" onChange={onCommentChange} value={comment} placeholder="Blah" maxLength="120" />
+                        <input type="text" onChange={onCommentChange} value={comment} placeholder="재잘재잘" maxLength="120" />
                         <input type="submit" value="입력" />
                     </form>
                 </div>
