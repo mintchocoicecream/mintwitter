@@ -3,13 +3,14 @@ import { addDoc, collection, getDocs, onSnapshot, orderBy, query } from "firebas
 import React, { useEffect, useState } from "react";
 import Comments from "./commentLists";
 
-const CommentWrite = ({ userObj, mintObj, isOwner }) => {
+const CommentWrite = ({ userObj, mintObj }) => {
     const [comment, setComment] = useState("");
+    const [commentArr, SetCommentArr] = useState([]);
 
     const onCommentChange = (event) => {
         const {target: {value}} = event;
         setComment(value);
-    };
+    };    
 
     const onCommentSubmit = async (event) => {
         event.preventDefault();
@@ -44,8 +45,6 @@ const CommentWrite = ({ userObj, mintObj, isOwner }) => {
         setComment("");
     };
 
-
-    const [commentArr, SetCommentArr] = useState([]);
     useEffect(() => {
         const q = query(
             collection(dbService, "mintweets", `${mintObj.id}`, "comments"),
@@ -59,6 +58,9 @@ const CommentWrite = ({ userObj, mintObj, isOwner }) => {
             SetCommentArr(commentsArr);
         });
         });
+
+
+
 
     return (
         <>

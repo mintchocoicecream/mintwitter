@@ -26,6 +26,26 @@
   padding-bottom: 15px;
 }
 
+.filter {
+  display: flex;
+  width: inherit;
+  margin-top: 5px;
+}
+
+.filter span {
+  padding: 10px;
+  background-color: beige;
+  margin: 0 5px;
+  cursor: pointer;
+  font-size: 15px;
+  color: rgba(112, 112, 112);
+  font-weight: normal;
+}
+
+.filter span:hover {
+  opacity: 0.7;
+}
+
 .nweetEdit {
   display: flex;
   flex-direction: column;

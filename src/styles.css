@@ -8,6 +8,7 @@
 @import "css/modal.css";
 @import "css/comments.css";
 @import "css/loading.css";
+@import "css/diary.css";
 
 :root {
   --mint: #b6ebdc;
@@ -78,6 +79,10 @@ footer {
 input {
   border: none;
   outline: none !important;
+}
+
+input[type="submit"] {
+  cursor: pointer;
 }
 
 @keyframes showContainer {

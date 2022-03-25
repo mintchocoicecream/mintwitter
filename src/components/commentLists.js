@@ -12,7 +12,6 @@ const Comments = ({userObj, mintObj, commentOwner, commentObj}) => {
             await deleteDoc(commentRef);
         }
     };
-        
 
     return (
             <div className="comments__comment">
