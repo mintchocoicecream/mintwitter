@@ -8,11 +8,13 @@ import React, { useState } from "react";
 
 const MintFactory = ({ userObj }) => {
     const [mintweet, setMintweet] = useState("");
+    const [textCnt, setTextCnt] = useState(0);
     const [attachment, setAttachment] = useState("");
 
     const onChange = (event) => {
         const {target: {value}} = event;
         setMintweet(value);
+        setTextCnt(value.length);
     };
 
     const onSubmit = async (e) => {
@@ -82,8 +84,9 @@ const MintFactory = ({ userObj }) => {
                         <input className="factoryInput__arrow"  type="submit" value="업로드" />
                </span>
                 
-                <textarea value={mintweet} className="factoryInput__input" type="text" placeholder="이러쿵저러쿵" onChange={onChange} rows="5" maxLength={150}>
+                <textarea value={mintweet} className="factoryInput__input" type="text" placeholder="이러쿵저러쿵" onChange={onChange} rows="5" maxLength={149}>
                 </textarea>
+                <span className="factoryInput__countText">{textCnt}/150</span>
             </div>
             <div className="factoryInput__addfile">
                 <label htmlFor="attach-file" className="factoryInput__label">
