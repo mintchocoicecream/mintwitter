@@ -5,7 +5,7 @@ import { deleteDoc, doc } from "firebase/firestore";
 import { dbService } from "fbase";
 
 const TodoList = ({userObj, todoObj}) => {
-    const todoRef = doc(dbService, "todos", `${userObj.uid}`, "todo", `${todoObj.id}`)
+    const todoRef = doc(dbService, "toDos", `${userObj.uid}`, "todo", `${todoObj.id}`)
 
     const onTodoDelete = async() => {
         const deleteOk = window.confirm("todo를 삭제하시겠습니까?");
