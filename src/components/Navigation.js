@@ -37,7 +37,7 @@ const Navigation = ({userObj}) => {
                             <span className="userName">
                                {userObj.displayName}'s
                             </span>
-                            <span>Diary</span>
+                            <span>To-Do</span>
                         </Link>
                     </li>
                     <li>

@@ -48,7 +48,7 @@ const CommentWrite = ({ userObj, mintObj }) => {
     useEffect(() => {
         const q = query(
             collection(dbService, "mintweets", `${mintObj.id}`, "comments"),
-            orderBy("createdAt", "desc"),
+            orderBy("createdAt"),
         );
         onSnapshot(q, (snapshot) => {
             const commentsArr = snapshot.docs.map( (doc) => ({

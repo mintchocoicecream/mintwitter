@@ -1,55 +1,22 @@
 import { dbService } from "fbase";
-import { addDoc, collection, getDocs, onSnapshot, orderBy, query } from "firebase/firestore";
+import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import React, { useEffect, useState } from "react";
+import TodoFactory from "components/TodoFactory";
+import TodoList from "components/TodoList";
 
 
 const MyContents = ({userObj}) => {
-    const [todo, setTodos] = useState("");
-
-    const onChange = (event) => {
-        const {target: {value}} = event;
-        setTodos(value);
-    };
-
-    const onSubmit = async(e) => {
-        e.preventDefault();
-
-
-        if(todo===""){
-            return
-        };
-
-        let date = new Date();
-
-        const todoData = {
-            creatorId: userObj.uid,
-            date: date.toLocaleString(),
-            todoText: todo,
-            creatorDisplayName: userObj.displayName,
-        };
-
-        try{
-            await addDoc(collection(dbService, "toDos", `${userObj.uid}`, "todo"), todoData );   
-            const querySnapshot = await getDocs(collection(dbService, "toDos", `${userObj.uid}`, "todo"));
-            querySnapshot.forEach((doc) => {
-                console.log(`${doc.id} => ${doc.data()}`);
-            }); 
-        }catch(error){
-            console.error("Error adding Tododocument:", error);
-        }
     
-        setTodos("");
-    }
     const [todosArr, setTodosArr] = useState([]);
 
-    
-
     useEffect(() => {
-        const q = query(
+        const quer = query(
             collection(dbService, "toDos", `${userObj.uid}`, "todo"),
-            orderBy("createdAt", "desc"),
+            orderBy("date", "desc"),
         );
-        onSnapshot(q, (snapshot) => {
+        onSnapshot(quer, (snapshot) => {
             const commentsArr = snapshot.docs.map( (doc) => ({
                 id: doc.id,
                 ...doc.data(),
@@ -58,22 +25,34 @@ const MyContents = ({userObj}) => {
         });
         });
 
+        
+
 
     
     return (
         <div className="container">
             <div className="diary">
-                <div className="diary__toDo">
-                    <h2>To Do</h2>
-                    <form className="diary__toDo-form" onSubmit={onSubmit}>
-                        <input type="text" value={todo} onChange={onChange} minLength="2" maxLength="30" placeholder="계획이란,,," />
-                        <input type="submit" value="저장"/>
-                    </form>
-                    <ul className="diary__toDos">
-                    </ul>
+                <div className="diary__todos">
+                 <TodoFactory userObj={userObj} />
+                 <div className="diary__todoList">
+                    {todosArr.map((todo) => (
+                        <TodoList key={todo.id} userObj={userObj} todoObj={todo} todoisOwner={todo.creatorId === userObj.uid}/>
+                    ))}
+                 </div>
+                 
                 </div>
+                
+                
                 <div className="diary__complete">
                     <h2>Complete</h2>
+                    <div className="diary__todoList diary__completes">
+                        <span className="diary__todoList-content">
+                            <li>Test Sample</li> 
+                            <span className="diary__todoList-contentIcon">
+                                <FontAwesomeIcon icon={faTrash} width="10px" />
+                            </span>
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
