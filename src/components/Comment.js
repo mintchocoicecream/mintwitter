@@ -1,5 +1,5 @@
 import { dbService } from "fbase";
-import { addDoc, collection, getDocs, onSnapshot, orderBy, query } from "firebase/firestore";
+import { addDoc, collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import Comments from "./commentLists";
 
@@ -34,10 +34,10 @@ const CommentWrite = ({ userObj, mintObj }) => {
         try{
             await addDoc(collection(dbService, "mintweets", `${mintObj.id}`, "comments"), mintweetComent );
             
-            const querySnapshot = await getDocs(collection(dbService, "mintweets", `${mintObj.id}`, "comments"));
-            querySnapshot.forEach((doc) => {
-            console.log(`${doc.id} => ${doc.data()}`);
-            });       
+            // const querySnapshot = await getDocs(collection(dbService, "mintweets", `${mintObj.id}`, "comments"));
+            // querySnapshot.forEach((doc) => {
+            // console.log(`${doc.id} => ${doc.data()}`);
+            // });       
         }catch(error){
             console.error("Error adding comments", error);
         };
@@ -57,7 +57,7 @@ const CommentWrite = ({ userObj, mintObj }) => {
             }));
             SetCommentArr(commentsArr);
         });
-        });
+        }, []);
 
 
 

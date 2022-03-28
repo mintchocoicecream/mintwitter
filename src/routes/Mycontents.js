@@ -23,7 +23,7 @@ const MyContents = ({userObj}) => {
             }));
             setTodosArr(commentsArr);
         });
-        });
+        }, []);
 
         
 
@@ -36,7 +36,7 @@ const MyContents = ({userObj}) => {
                  <TodoFactory userObj={userObj} />
                  <div className="diary__todoList">
                     {todosArr.map((todo) => (
-                        <TodoList key={todo.id} userObj={userObj} todoObj={todo} todoisOwner={todo.creatorId === userObj.uid}/>
+                        <TodoList key={todo.id} userObj={userObj} todoObj={todo}/>
                     ))}
                  </div>
                  

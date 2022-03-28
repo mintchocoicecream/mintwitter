@@ -1,9 +1,18 @@
 import React  from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faCheck } from "@fortawesome/free-solid-svg-icons";
+import { deleteDoc, doc } from "firebase/firestore";
+import { dbService } from "fbase";
 
-const TodoList = ({userObj, todoObj, todoisOwner}) => {
-    // const [check, seCheck] = useState([]);
+const TodoList = ({userObj, todoObj}) => {
+    const todoRef = doc(dbService, "todos", `${userObj.uid}`, "todo", `${todoObj.id}`)
+
+    const onTodoDelete = async() => {
+        const deleteOk = window.confirm("todo를 삭제하시겠습니까?");
+        if(deleteOk){
+            await deleteDoc(todoRef);
+        }
+    }
     
     function onCheck(event) {
         event.preventDefault();
@@ -16,8 +25,12 @@ const TodoList = ({userObj, todoObj, todoisOwner}) => {
                     <li>{todoObj.todoText}
                     </li> 
                     <span className="diary__todoList-contentIcon">
-                        <FontAwesomeIcon icon={faCheck} width="12px" onClick={onCheck} />
-                        <FontAwesomeIcon icon={faTrash} width="10px" />
+                        <span>
+                            <FontAwesomeIcon icon={faCheck} width="12px" onClick={onCheck} />
+                        </span>
+                        <span onClick={onTodoDelete}>
+                            <FontAwesomeIcon icon={faTrash} width="10px" />
+                        </span>
                     </span>
                 </span>
 
