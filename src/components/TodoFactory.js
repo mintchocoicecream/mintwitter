@@ -38,7 +38,8 @@ const TodoFactory = ({ userObj }) => {
     return (
         <div className="todoForm__main">
             <div className="diary__toDo">
-                <h2>To Do</h2>
+                <h2>{userObj.displayName}'s</h2>
+                <h2>Daily To Do</h2>
                 <form className="diary__toDo-form" onSubmit={onSubmit}>
                     <input type="text" value={todo} onChange={onChange} minLength="2" maxLength="30" placeholder="뚜두투두" />
                     <input type="submit" value="+"/>

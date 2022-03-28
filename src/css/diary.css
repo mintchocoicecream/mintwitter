@@ -27,21 +27,24 @@
   overflow-y: auto;
 }
 
-.diary__completes {
-  height: 462px;
-}
-
 .diary__todoList-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 8px;
 }
 
 .diary__todoList li {
   text-align: left;
-  margin-bottom: 8px;
+  font-size: 14px;
   cursor: default;
   list-style-image: url("./image/mintchoco_mini.png");
+}
+
+.diary__todoList-contentIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .diary__todoList-contentIcon svg {
