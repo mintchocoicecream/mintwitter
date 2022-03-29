@@ -53,6 +53,7 @@
   padding: 2px 6px;
   border-radius: 5px;
   margin-left: 8px;
+  cursor: pointer;
 }
 
 .diary__todoList-contentIcon span:first-child {
@@ -60,14 +61,14 @@
 }
 
 .diary__todoList-content-check {
-  color: var(--mint);
+  color: var(--pink);
 }
 
 .diary__todoList-contentIcon svg {
   cursor: pointer;
 }
 
-.diary__todoList-contentIcon svg:hover {
+.diary__todoList-contentIcon span:hover {
   color: var(--mint);
 }
 
@@ -99,10 +100,19 @@
   margin-bottom: 20px;
 }
 
-.diary div h2 {
-  font-size: 25px;
+.diary__toDo h2 {
+  font-size: 18px;
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+}
+
+.diary__toDo h2:first-child {
+  font-weight: bold;
+}
+
+.diary__toDo h2:nth-child(2) {
+  font-size: 25px;
+  margin-bottom: 25px;
 }
 
 .diary__toDo-form {

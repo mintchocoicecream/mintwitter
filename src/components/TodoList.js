@@ -39,10 +39,10 @@ const TodoList = ({userObj, todoObj}) => {
                     <li>{todoObj.todoText}
                     </li> 
                     <span className="diary__todoList-contentIcon">
-                        <span onClick={onCheck} style={{backgroundColor:"rgba(174, 255, 235, 0.5)"}}>
+                        <span onClick={onCheck} style={{backgroundColor:"rgb(251, 215, 245)"}}>
                             <FontAwesomeIcon icon={faCheck} width="10px" />
                         </span>
-                        <span onClick={onTodoDelete} style={{backgroundColor:"rgba(174, 255, 235, 0.5)"}}>
+                        <span onClick={onTodoDelete} style={{backgroundColor:"rgb(251, 215, 245)"}}>
                             <FontAwesomeIcon icon={faTrash} width="10px" />
                         </span>
                     </span>
