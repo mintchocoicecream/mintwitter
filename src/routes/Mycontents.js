@@ -86,30 +86,33 @@ const MyContents = ({userObj}) => {
                         ))}
                     </div>
                 </div>
-                <div className="diary__complete">
+                <div className="diary__monthTodos">
                     <div className="todoForm__main">
                         <div className="diary__toDo">
                             <h2>{userObj.displayName}'s</h2>
                             <h2>Month To Do</h2>
                             <form className="diary__toDo-form" onSubmit={onMonthSubmit}>
-                                <input type="text" onChange={onChange} minLength="2" maxLength="30" placeholder="뚜두투두" />
+                                <input type="text" onChange={onChange} value={monthTodo} minLength="2" maxLength="30" placeholder="뚜두투두" />
                                 <input type="submit" value="+"/>
                             </form>
                         </div>
                     </div>
                     <div className="diary__todoList">
-                        <span className="diary__todoList-content">
-                            <li>트위터 완성
-                            </li> 
-                            <span className="diary__todoList-contentIcon">
-                                <span>
-                                    <FontAwesomeIcon icon={faCheck} width="12px" />
-                                </span>
-                                <span>
-                                    <FontAwesomeIcon icon={faTrash} width="10px" />
+                        {monthToDos.map((monthTodo) => (
+                            <span className="diary__todoList-content">
+                                <li>{monthTodo.todoText}
+                                </li> 
+                                <span className="diary__todoList-contentIcon">
+                                    <span>
+                                        <FontAwesomeIcon icon={faCheck} width="10px" />
+                                    </span>
+                                    <span>
+                                        <FontAwesomeIcon icon={faTrash} width="10px" />
+                                    </span>
                                 </span>
                             </span>
-                        </span>
+                        ))}
+                        
                     </div>
                 </div>
             </div>

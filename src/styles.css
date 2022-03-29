@@ -16,6 +16,7 @@
   --pink: rgb(251, 215, 245);
   --light-pink: rgb(251, 215, 245, 0.5);
   --beige: rgba(250, 235, 215, 0.623);
+  --grey: rgb(230, 230, 230);
   --light-black: rgba(0, 0, 0, 0.452);
   --box-shadow: 3px 3px rgb(233, 233, 233);
   --font-basic: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,

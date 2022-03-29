@@ -24,6 +24,7 @@ const TodoFactory = ({ userObj }) => {
             date: date.toLocaleString(),
             todoText: todo,
             creatorDisplayName: userObj.displayName,
+            checked: false,
         };
 
         try{
