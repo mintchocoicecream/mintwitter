@@ -22,6 +22,7 @@
   align-content: center;
   justify-content: center;
   margin: 5px;
+  margin-bottom: 15px;
   border-bottom: 2px solid var(--mint);
   padding-bottom: 15px;
 }
@@ -103,7 +104,7 @@
 
 .factoryInput__input {
   display: block;
-  margin-top: 3px;
+  margin-top: 8px;
   padding: 10px 10px;
   font-weight: 600;
   color: rgba(0, 0, 0, 0.698);
@@ -152,6 +153,7 @@
   align-items: center;
   font-weight: 600;
   transition: all 0.3s ease-in-out;
+  box-shadow: var(--button-shadow);
 }
 
 .factoryInput__arrow:hover {

@@ -22,7 +22,7 @@ const MyContents = ({userObj}) => {
             }));
             setTodosArr(todoArr);
         });
-        }, []);
+        });
 
     useEffect(() => {
         const quer = query(
@@ -37,7 +37,7 @@ const MyContents = ({userObj}) => {
             }));
             setMonthToDos(monthTodoArr);
         });
-    }, []);
+    });
 
 
     const [monthTodo, setMonthTodo] = useState("");

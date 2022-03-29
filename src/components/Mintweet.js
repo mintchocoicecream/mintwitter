@@ -108,7 +108,11 @@ const Mintweet = ({userObj, mintObj, isOwner}) => {
                 ) :(
                 <>
                 <div className="nweet__writer">
-                <img src={mintObj.profile} width="50px" alt="profilePhoto" style={{backgroundImage: mintObj.profile,}}/>  
+                { (userObj.uid === mintObj.creatorId) ? (
+                    <img src={userObj.profilePhoto} width="50px" alt="profilePhoto" style={{backgroundImage: userObj.profilePhoto,}}/>
+                    ) : (
+                    <img src={mintObj.profile} width="50px" alt="profilePhoto" style={{backgroundImage: mintObj.profile,}}/>
+                )}
                 { (userObj.uid === mintObj.creatorId) ? (<h3>{userObj.displayName}</h3>) : (<h3>{mintObj.creatorDisplayName}</h3>)}
                 </div>
                 <h4 className="nweet__contents-texts">{mintObj.text}</h4>

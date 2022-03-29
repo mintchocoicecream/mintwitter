@@ -14,9 +14,9 @@
 }
 
 .auth__icon {
-  color: var(--mint);
   cursor: pointer;
   justify-content: center;
+  margin-bottom: 40px;
 }
 
 .authForm__createAccount,
