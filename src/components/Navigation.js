@@ -18,7 +18,7 @@ const Navigation = ({userObj}) => {
                 <ul className="navUl">
                     <li>
                         <Link to="/" className="navHome">
-                            <FontAwesomeIcon icon={faTwitter} size="2x" />
+                            <img src="https://firebasestorage.googleapis.com/v0/b/mintwitter-48f72.appspot.com/o/mintchoco01.png?alt=media&token=b9776a6c-23fd-4f20-aedf-03abaf16bf31" width="40px"/>
                             <span>
                                 Home
                             </span>
