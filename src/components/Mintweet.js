@@ -1,5 +1,5 @@
 import { dbService, storageService } from "fbase";
-import { deleteDoc, doc, updateDoc } from "firebase/firestore";
+import { deleteDoc, doc, updateDoc} from "firebase/firestore";
 import { deleteObject, ref } from "firebase/storage";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPencilAlt, faHeart, faCommentDots } from "@fortawesome/free-solid-svg-icons";
@@ -14,7 +14,6 @@ const Mintweet = ({userObj, mintObj, isOwner}) => {
     const [commentToggle, setCommentToggle] = useState(false);
     const mintweetRef = doc(dbService, "mintweets", `${mintObj.id}`);
     const urlRef = ref(storageService, mintObj.attachmentUrl);
-
 
     const onDeleteClick = async () => {
         const ok = window.confirm("정말 이 게시글을 삭제하시겠습니까?");

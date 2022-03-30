@@ -25,19 +25,19 @@ const Navigation = ({userObj}) => {
                         </Link>
                     </li>
                     <li>
-                        <Link className="navProfile" to="/profile">
-                            <FontAwesomeIcon icon={faUser} size="2x" />
-                            <span className="userName">{userObj.displayName}'s</span>
-                            <span>Profile</span>
-                        </Link>
-                    </li>
-                    <li>
                         <Link className="navDiary" to="/myContents">
                             <FontAwesomeIcon icon={faPenToSquare} size="2x" />
                             <span className="userName">
                                {userObj.displayName}'s
                             </span>
                             <span>To-Do</span>
+                        </Link>
+                    </li>
+                    <li>
+                        <Link className="navProfile" to="/profile">
+                            <FontAwesomeIcon icon={faUser} size="2x" />
+                            <span className="userName">{userObj.displayName}'s</span>
+                            <span>Profile</span>
                         </Link>
                     </li>
                     <li>

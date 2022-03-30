@@ -21,7 +21,7 @@ const MonthList = ({userObj, monthObj}) => {
                 checked: false,
             })
             setMonthChk(false);
-        }else if(!monthChk){
+        }else if(monthChk === false){
             await updateDoc(monthTodoRef, {
                 checked: true,
             })
