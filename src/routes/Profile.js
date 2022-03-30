@@ -1,33 +1,18 @@
 import { authService, dbService, storageService } from "fbase";
 import { updateProfile } from "firebase/auth";
 import { v4 } from "uuid";
-import { collection, getDocs, query, where } from "firebase/firestore";
 import { getDownloadURL, ref, uploadString } from "firebase/storage";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { doc, updateDoc } from "firebase/firestore";
 
 const Profile = ({refreshUser, userObj}) => {
     const [newDisplayName, setNewDisplayName] = useState(userObj.displayName);
     const [attachment, setAttachment] = useState("");
 
     if(userObj.profilePhoto === null){
-        const defaultPhoto = "https://firebasestorage.googleapis.com/v0/b/mintwitter-48f72.appspot.com/o/bmIxu1GQILVa4E0ykhOS5cJpu8i1%2FprofilePhoto%2Fmintchocobear.png?alt=media&token=3ef3d496-4d4f-4633-b1a4-8ba889a57615";
+        const defaultPhoto = "https://firebasestorage.googleapis.com/v0/b/mintwitter-48f72.appspot.com/o/mintchocobear.png?alt=media&token=42a42773-cc88-4b2a-a989-5e4ca420df7f";
         userObj.profilePhoto = defaultPhoto;
     };
-
-    const getMyTweets = async () => {
-        const q = query(
-        collection(dbService, "mintweets"),
-        where("creatorId", "==", `${userObj.uid}`)
-        );
-        const querySnapshot = await getDocs(q);
-        querySnapshot.forEach((doc) => {
-        // console.log(doc.id, " => ", doc.data());
-        });
-        };
-
-    useEffect( () => {
-        getMyTweets();
-    });
 
     const onPhotoChange = (event) => {
         const {
@@ -53,6 +38,7 @@ const Profile = ({refreshUser, userObj}) => {
 
     const onSubmit = async (event) => {
         event.preventDefault();
+        const userRef = doc(dbService, "user", `${userObj.uid}`);
 
         let attachmentUrl = "";
         if(attachment !== ""){
@@ -62,14 +48,19 @@ const Profile = ({refreshUser, userObj}) => {
             const response = await uploadString(attachmentRef, attachment, "data_url");
             //storage에 있는 파일 URL로 다운로드 받기
             attachmentUrl = await getDownloadURL(response.ref);
-
             if(userObj.profilePhoto !== attachmentUrl){
                 await updateProfile(authService.currentUser, {photoURL: attachmentUrl});
+                await updateDoc(userRef, {
+                    photo: attachmentUrl,
+                  });
             }
         }
 
         if(userObj.displayName !== newDisplayName){
             await updateProfile(authService.currentUser, {displayName: newDisplayName});
+            await updateDoc(userRef, {
+                displayName: newDisplayName,
+              });
         }
         refreshUser();
         window.location.reload();

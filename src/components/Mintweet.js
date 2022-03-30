@@ -1,9 +1,9 @@
 import { dbService, storageService } from "fbase";
-import { deleteDoc, doc, updateDoc} from "firebase/firestore";
+import { deleteDoc, doc, onSnapshot, updateDoc} from "firebase/firestore";
 import { deleteObject, ref } from "firebase/storage";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPencilAlt, faHeart, faCommentDots } from "@fortawesome/free-solid-svg-icons";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CommentWrite from "./Comment";
 
 const Mintweet = ({userObj, mintObj, isOwner}) => {
@@ -14,6 +14,19 @@ const Mintweet = ({userObj, mintObj, isOwner}) => {
     const [commentToggle, setCommentToggle] = useState(false);
     const mintweetRef = doc(dbService, "mintweets", `${mintObj.id}`);
     const urlRef = ref(storageService, mintObj.attachmentUrl);
+    const [userName, setUsername] = useState("")
+    const [photo, setPhoto] = useState("");
+
+
+    useEffect(() => {
+        onSnapshot(doc(dbService, "user", `${mintObj.creatorId}`), (doc) => {
+            const userData = (doc.data()); 
+            setUsername(userData.displayName);
+            setPhoto(userData.photo);
+        });
+        
+    });
+    
 
     const onDeleteClick = async () => {
         const ok = window.confirm("정말 이 게시글을 삭제하시겠습니까?");
@@ -107,12 +120,14 @@ const Mintweet = ({userObj, mintObj, isOwner}) => {
                 ) :(
                 <>
                 <div className="nweet__writer">
-                { (userObj.uid === mintObj.creatorId) ? (
+                {/* { (userObj.uid === mintObj.creatorId) ? (
                     <img src={userObj.profilePhoto} width="50px" alt="profilePhoto" style={{backgroundImage: userObj.profilePhoto,}}/>
                     ) : (
                     <img src={mintObj.profile} width="50px" alt="profilePhoto" style={{backgroundImage: mintObj.profile,}}/>
-                )}
-                { (userObj.uid === mintObj.creatorId) ? (<h3>{userObj.displayName}</h3>) : (<h3>{mintObj.creatorDisplayName}</h3>)}
+                )} */}
+                <img src={photo} width="50px" alt="profilePhoto" style={{backgroundImage: photo,}} />
+                {/* { (userObj.uid === mintObj.creatorId) ? (<h3>{userObj.displayName}</h3>) : (<h3>{mintObj.creatorDisplayName}</h3>)} */}
+                <h3>{userName}</h3>
                 </div>
                 <h4 className="nweet__contents-texts">{mintObj.text}</h4>
                 {mintObj.attachmentUrl && 

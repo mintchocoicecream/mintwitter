@@ -7,7 +7,7 @@ import { updateCurrentUser } from 'firebase/auth';
 function App() {
   const [init, setInit] = useState(false);
   const [userObj, setUserObj] = useState(null);
-  useEffect(() => {
+  useEffect( () => {
     authService.onAuthStateChanged((user) => {
       if(user){
         setUserObj({
@@ -21,7 +21,7 @@ function App() {
         setUserObj(null);
       }
       setInit(true);
-    });
+    });    
   }, []);
 
 

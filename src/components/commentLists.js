@@ -1,10 +1,12 @@
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { dbService } from "fbase";
-import { deleteDoc, doc } from "firebase/firestore";
-import React from "react";
+import { deleteDoc, doc, onSnapshot } from "firebase/firestore";
+import React, { useEffect, useState } from "react";
 
 const Comments = ({userObj, mintObj, commentOwner, commentObj}) => {
+    const [userName, setUsername] = useState("")
+    const [photo, setPhoto] = useState("");
     const commentRef = doc(dbService, "mintweets", `${mintObj.id}`, "comments", `${commentObj.id}`);
     const onCommentDeleteClick = async () => {
         const ok = window.confirm("댓글을 삭제하시겠습니까?");
@@ -13,22 +15,22 @@ const Comments = ({userObj, mintObj, commentOwner, commentObj}) => {
         }
     };
 
+    useEffect(() => {
+        onSnapshot(doc(dbService, "user", `${commentObj.creatorId}`), (doc) => {
+            const userData = (doc.data()); 
+            setUsername(userData.displayName);
+            setPhoto(userData.photo);
+        });
+        
+    });
+
     return (
             <div className="comments__comment">
                 <div className="comments__comment-writer">
                     <span className="comment__writer-img">
-                        {userObj.uid === commentObj.creatorId ? (
-                            <img src={userObj.profilePhoto} width="30px" height="30px" alt="profileImg" />
-                            ) : (
-                            <img src={commentObj.profile} width="30px" height="30px" alt="profileImg" />
-                        )}
+                        <img src={photo} width="30px" height="30px" alt="profileImg" />   
                     </span>
-                    {userObj.uid === commentObj.creatorId ? (
-                        <span className="comment__wirter-name">{userObj.displayName}</span>
-                        ) : (
-                        <span className="comment__wirter-name">{commentObj.creatorDisplayName}</span>
-                        )}
-                    
+                    <span className="comment__wirter-name">{userName}</span>                 
                 </div>
                 <div className="comments__texts">
                     <span className="comment__text">{commentObj.text}</span>
