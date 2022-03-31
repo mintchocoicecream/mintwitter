@@ -3,6 +3,7 @@
   flex-wrap: wrap;
   width: 100%;
   justify-content: center;
+  font-family: var(--fonts-pen);
 }
 
 .diary__todos,
@@ -36,8 +37,10 @@
 
 .diary__todoList li {
   text-align: left;
-  font-size: 14px;
+  font-size: 20px;
   cursor: default;
+  opacity: 0.8;
+  font-family: var(--fonts-pen);
   list-style-image: url("./image/mintchoco_mini.png");
 }
 
@@ -101,17 +104,14 @@
 }
 
 .diary__toDo h2 {
-  font-size: 18px;
+  font-size: 25px;
   width: 100%;
   margin-bottom: 10px;
-}
-
-.diary__toDo h2:first-child {
-  font-weight: bold;
+  font-family: var(--fonts-pen);
 }
 
 .diary__toDo h2:nth-child(2) {
-  font-size: 25px;
+  font-size: 28px;
   margin-bottom: 25px;
 }
 
@@ -132,6 +132,8 @@
   border-radius: 20px;
   width: 100%;
   transition: all 0.3s ease-in-out;
+  font-family: var(--fonts-pen);
+  font-size: 20px;
 }
 
 .diary__toDo-form input[type="text"]:focus {

@@ -53,8 +53,19 @@ const Home = ({userObj}) => {
         <div className="container">
             <MintFactory userObj={userObj}/>
             <div className="filter">
-                <span onClick={onAll}>All</span>
-                <span onClick={onMycontent}>내 글보기</span>
+                {onall ? (
+                    <>
+                    <span onClick={onAll}>All</span>
+                    <span onClick={onMycontent} style={{backgroundColor: "pink"}}>내 글</span>
+                    </>
+                ) : (
+                    <>
+                    <span onClick={onAll} style={{backgroundColor: "pink"}}>All</span>
+                    <span onClick={onMycontent}>내 글</span>
+                    </>
+                )}
+                
+                
             </div>  
             <div className="homeDiv">
                 {
