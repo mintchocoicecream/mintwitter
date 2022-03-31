@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPenToSquare, faRightFromBracket, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faListSquares, faPenToSquare, faRightFromBracket, faUser } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 const Navigation = ({userObj}) => {
-    const [activated, setActivated] = useState(0);
+    const [activated, setActivated] = useState(true);
+    const [todoAct, setTodoAct] = useState(false);
+    const [profileAct, setProfileAct] = useState(false);
+    const [logoutAct, setLogoutAct] = useState(false);
 
     if(userObj.displayName === null){
         const name= "Anonymous";
@@ -12,19 +15,31 @@ const Navigation = ({userObj}) => {
     };
 
     const onHome = () => {
-        setActivated(0);
+        setActivated(true);
+        setTodoAct(false);
+        setProfileAct(false);
+        setLogoutAct(false);
     }
 
     const onTodo = () => {
-        setActivated(1);
+        setTodoAct(true);
+        setActivated(false);
+        setProfileAct(false);
+        setLogoutAct(false);
     }
 
     const onProfile = () => {
-        setActivated(2);
+        setProfileAct(true);
+        setActivated(false);
+        setTodoAct(false);
+        setLogoutAct(false);
     }
 
     const onLogout = () => {
-        setActivated(3);
+        setLogoutAct(true);
+        setActivated(false);
+        setTodoAct(false);
+        setProfileAct(false);
     }
 
     return(
@@ -34,7 +49,7 @@ const Navigation = ({userObj}) => {
                     <li>
                         <Link to="/" className="navHome" onClick={onHome}>
                             <img src="https://firebasestorage.googleapis.com/v0/b/mintwitter-48f72.appspot.com/o/mintchoco01.png?alt=media&token=b9776a6c-23fd-4f20-aedf-03abaf16bf31" width="40px" alt="home"/>
-                            {activated === 0 ? (
+                            {activated ? (
                             <span id="onhome" style={{color: "pink"}}>
                                 Home
                             </span>) : (
@@ -48,7 +63,7 @@ const Navigation = ({userObj}) => {
                     <li>
                         <Link className="navDiary" to="/myContents" onClick={onTodo}>
                             <FontAwesomeIcon icon={faPenToSquare} size="2x" />
-                            {activated === 1 ? (
+                            {todoAct ? (
                                 <>
                                 <span className="userName" style={{color: "pink"}}>
                                {userObj.displayName}'s
@@ -69,7 +84,7 @@ const Navigation = ({userObj}) => {
                     <li>
                         <Link className="navProfile" to="/profile" onClick={onProfile}>
                             <FontAwesomeIcon icon={faUser} size="2x" />
-                            {activated === 2 ? (
+                            {profileAct ? (
                                 <>
                                 <span className="userName" style={{color: "pink"}}>{userObj.displayName}'s</span>
                                 <span id="onprofile" style={{color: "pink"}}>Profile</span>
@@ -85,7 +100,7 @@ const Navigation = ({userObj}) => {
                     <li>
                         <Link className="navLogout" to="/logout" onClick={onLogout}>
                             <FontAwesomeIcon icon={faRightFromBracket} size="2x" />
-                            {activated === 3 ? (
+                            {logoutAct ? (
                                 <span id="onlogout" style={{color: "pink"}}>
                                     Logout
                                 </span>
