@@ -1,13 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faListSquares, faPenToSquare, faRightFromBracket, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faPenToSquare, faRightFromBracket, faUser } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 const Navigation = ({userObj}) => {
-    const [activated, setActivated] = useState(true);
-    const [todoAct, setTodoAct] = useState(false);
-    const [profileAct, setProfileAct] = useState(false);
-    const [logoutAct, setLogoutAct] = useState(false);
+    const [activated, setActivated] = useState("");    
+
+    useEffect(() => {
+        const pages = document.location.href.split("/");
+        let current = pages[4];
+        if(current === ""){
+            setActivated(current);
+        }else if(current === "myContents"){
+            setActivated(current);
+        }else if(current === "profile"){
+            setActivated(current);
+        }else if(current === "logout"){
+            setActivated(current);
+        }
+    }, []);
 
     if(userObj.displayName === null){
         const name= "Anonymous";
@@ -15,32 +26,21 @@ const Navigation = ({userObj}) => {
     };
 
     const onHome = () => {
-        setActivated(true);
-        setTodoAct(false);
-        setProfileAct(false);
-        setLogoutAct(false);
+        setActivated("");
     }
 
     const onTodo = () => {
-        setTodoAct(true);
-        setActivated(false);
-        setProfileAct(false);
-        setLogoutAct(false);
+        setActivated("myContents");
     }
 
     const onProfile = () => {
-        setProfileAct(true);
-        setActivated(false);
-        setTodoAct(false);
-        setLogoutAct(false);
+        setActivated("profile");
     }
 
     const onLogout = () => {
-        setLogoutAct(true);
-        setActivated(false);
-        setTodoAct(false);
-        setProfileAct(false);
+        setActivated("logout");
     }
+    
 
     return(
         <>
@@ -49,7 +49,7 @@ const Navigation = ({userObj}) => {
                     <li>
                         <Link to="/" className="navHome" onClick={onHome}>
                             <img src="https://firebasestorage.googleapis.com/v0/b/mintwitter-48f72.appspot.com/o/mintchoco01.png?alt=media&token=b9776a6c-23fd-4f20-aedf-03abaf16bf31" width="40px" alt="home"/>
-                            {activated ? (
+                            {activated === "" ? (
                             <span id="onhome" style={{color: "pink"}}>
                                 Home
                             </span>) : (
@@ -63,7 +63,7 @@ const Navigation = ({userObj}) => {
                     <li>
                         <Link className="navDiary" to="/myContents" onClick={onTodo}>
                             <FontAwesomeIcon icon={faPenToSquare} size="2x" />
-                            {todoAct ? (
+                            {activated === "myContents" ? (
                                 <>
                                 <span className="userName" style={{color: "pink"}}>
                                {userObj.displayName}'s
@@ -84,7 +84,7 @@ const Navigation = ({userObj}) => {
                     <li>
                         <Link className="navProfile" to="/profile" onClick={onProfile}>
                             <FontAwesomeIcon icon={faUser} size="2x" />
-                            {profileAct ? (
+                            {activated === "profile" ? (
                                 <>
                                 <span className="userName" style={{color: "pink"}}>{userObj.displayName}'s</span>
                                 <span id="onprofile" style={{color: "pink"}}>Profile</span>
@@ -100,7 +100,7 @@ const Navigation = ({userObj}) => {
                     <li>
                         <Link className="navLogout" to="/logout" onClick={onLogout}>
                             <FontAwesomeIcon icon={faRightFromBracket} size="2x" />
-                            {logoutAct ? (
+                            {activated === "logout" ? (
                                 <span id="onlogout" style={{color: "pink"}}>
                                     Logout
                                 </span>

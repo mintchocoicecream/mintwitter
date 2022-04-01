@@ -37,6 +37,10 @@ function App() {
     });
   }
 
+  useEffect(() => {
+    return () => setInit(false);
+  }, []);
+
   return (
     <>
       {init ? <AppRouter refreshUser={refreshUser} isLoggedIn={Boolean(userObj)} userObj={userObj}/> : <Loading />}

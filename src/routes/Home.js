@@ -8,7 +8,6 @@ const Home = ({userObj}) => {
     const [mintweets, setMintweets] = useState([]);
     const [onall, setOnAll] = useState(false);
     const [mydata, setMydata] = useState([]);
-    
 
     useEffect(() => {
         const q = query(
@@ -22,7 +21,7 @@ const Home = ({userObj}) => {
             }));
         setMintweets(mintweetArr);
         });
-    });
+    }, []);
 
     const onAll = () => {
         if(onall === true){
@@ -30,7 +29,7 @@ const Home = ({userObj}) => {
         }
     }
 
-    const onMycontent = async() => {
+    const onMycontent = () => {
         const quer = query(
             collection(dbService, "mintweets"), 
             where("creatorId", "==", `${userObj.uid}`),
