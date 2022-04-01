@@ -57,7 +57,7 @@ const CommentWrite = ({ userObj, mintObj }) => {
             }));
             SetCommentArr(commentsArr);
         });
-        }, []);
+        });
 
 
 
@@ -74,7 +74,7 @@ const CommentWrite = ({ userObj, mintObj }) => {
                 </div>
                 
                 {commentArr.map( (comment) => (
-                    <Comments userObj={userObj} mintObj={mintObj} commentOwner={userObj.uid === comment.creatorId} commentObj={comment} />
+                    <Comments key={comment.id} userObj={userObj} mintObj={mintObj} commentOwner={userObj.uid === comment.creatorId} commentObj={comment} />
                 ))}
                 
             </div>

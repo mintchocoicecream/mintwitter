@@ -17,7 +17,6 @@ const TodoList = ({userObj, todoObj}) => {
     }
     
     const onCheck = async() => {
-
         if(checked){
             await updateDoc(todoRef,{
                 checked: false,

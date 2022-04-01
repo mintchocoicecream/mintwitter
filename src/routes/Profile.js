@@ -1,7 +1,7 @@
 import { authService, dbService, storageService } from "fbase";
 import { updateProfile } from "firebase/auth";
 import { v4 } from "uuid";
-import { getDownloadURL, ref, uploadString } from "firebase/storage";
+import { deleteObject, getDownloadURL, ref, uploadString } from "firebase/storage";
 import React, { useState } from "react";
 import { doc, updateDoc } from "firebase/firestore";
 
