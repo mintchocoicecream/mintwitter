@@ -20,12 +20,14 @@
   <h5>● 가입 승인 ●<br/>( Authentication )<br/> ※ 구글, 깃허브 계정으로 회원가입 가능</h5>
   <img width="100%" src="https://user-images.githubusercontent.com/64584574/170192612-82fc05a8-7fd6-4592-865e-e917d78837e5.JPG" /><br/>
 </div>
+<br/>
 
 <div align="center">
   <h3>2. 탭 구성</h3>
   <h5>● Home, Todo, Profile, Logout ●</h5>
   <img width="100%" src="https://user-images.githubusercontent.com/64584574/170198433-abe0d547-d980-49fa-a133-58f8ead101a1.gif" /><br/>
 </div>
+<br/>
 
 <div align="center">
   <h3>3. Profile</h3>
@@ -38,6 +40,7 @@
   <h5>● 프로필 수정 후 ●</h5>
   <img width="100%" src="https://user-images.githubusercontent.com/64584574/170192692-4fa0ad26-97b1-4cc7-83c3-26a9e681ccd0.JPG" /><br/>
 </div>
+<br/>
 
 <div align="center">
   <h3>4. Home</h3>
@@ -52,21 +55,23 @@
   <h5>● 게시글 삭제 ●</h5>
   <img width="100%" src="https://user-images.githubusercontent.com/64584574/170205389-f3d6bcb5-3c2f-4705-895e-215c993f6d9b.gif" /><br/>
 </div>
+<br/>
 
 <div align="center">
   <h3>5. Todo</h3>
   <h5>● ToDoList 추가 ●</h5>
-  <img width="100%" src="" /><br/>
+  <img width="100%" src="https://user-images.githubusercontent.com/64584574/170208438-1781a842-7b52-4a9f-a0c4-3bad370a2416.JPG" /><br/>
   <h5>● ToDoList 저장 ●<br/>( Cloud Firestore )</h5>
   <img width="100%" src="https://user-images.githubusercontent.com/64584574/170192555-1ff9c234-612d-4312-9ee9-8e8a3d5a5bcc.JPG" /><br/>
   <h5>● ToDoList 완료 ●<br/>( 완료 부분 체크시 분홍색으로 바뀜 )</h5>
   <img width="100%" src="https://user-images.githubusercontent.com/64584574/170192586-4e339e3c-14f5-40a0-b1fc-e0f9a4cade83.JPG" /><br/>
 </div>
+<br/>
 
 <div align="center">
   <h3>5. 로그아웃</h3>
   <h5>● Logout ●</h5>
   <img width="100%" src="https://user-images.githubusercontent.com/64584574/170205675-fbd2282e-a811-43b7-a868-d5721d949b07.gif" /><br/>
 </div>
-
+<br/>
     
